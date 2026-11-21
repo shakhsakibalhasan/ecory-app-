@@ -1,0 +1,14 @@
+drop policy "public read" on public.reviews;
+create policy "public read" on public.reviews for select to anon, authenticated using (hidden = false);
+drop policy "public read" on public.categories;
+create policy "public read" on public.categories for select to anon, authenticated using (visible = true);
+drop policy "public read" on public.outlets;
+create policy "public read" on public.outlets for select to anon, authenticated using (visible = true);
+drop policy "public read" on public.products;
+create policy "public read" on public.products for select to anon, authenticated using (active = true);
+drop policy "public read" on public.site_settings;
+create policy "public read" on public.site_settings for select to anon, authenticated using (id = 1);
+drop policy "ui public read" on public.app_ui_settings;
+create policy "ui public read" on public.app_ui_settings for select to anon, authenticated using (id = 1);
+drop policy "public branding read" on public.app_branding;
+create policy "public branding read" on public.app_branding for select to anon, authenticated using (id = 1);

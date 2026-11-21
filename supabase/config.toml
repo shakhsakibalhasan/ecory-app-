@@ -1,0 +1,29 @@
+project_id = "jlpdhyoxjuzxrhtkuwuu"
+
+[functions.daily-notifications]
+verify_jwt = false
+
+[auth.email]
+enable_confirmations = false
+
+[functions.payment-start]
+verify_jwt = false
+
+[functions.payment-callback]
+verify_jwt = false
+
+
+# Password-only phone registration for now; enable confirmations when SMS OTP is configured.
+[auth.sms]
+enable_signup = true
+enable_confirmations = false
+
+
+[functions.doctor-payment-start]
+verify_jwt = false
+
+[functions.doctor-payment-callback]
+verify_jwt = false
+
+[functions.customer-sms]
+verify_jwt = false

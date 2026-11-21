@@ -1,0 +1,26 @@
+BEGIN;
+-- Ecory UI refresh: additive columns only; preserve existing data and policies.
+ALTER TABLE public.products ADD COLUMN IF NOT EXISTS best_selling boolean NOT NULL DEFAULT false;
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS ticker_bn text NOT NULL DEFAULT '';
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS ticker_en text NOT NULL DEFAULT '';
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS ticker_enabled boolean NOT NULL DEFAULT false;
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS play_store_url text NOT NULL DEFAULT '';
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS phone_auth_enabled boolean NOT NULL DEFAULT false;
+ALTER TABLE public.posts ADD COLUMN IF NOT EXISTS excerpt_en text NOT NULL DEFAULT '';
+ALTER TABLE public.reviews ADD COLUMN IF NOT EXISTS text_en text NOT NULL DEFAULT '';
+ALTER TABLE public.reviews ADD COLUMN IF NOT EXISTS name_en text NOT NULL DEFAULT '';
+ALTER TABLE public.doctors ADD COLUMN IF NOT EXISTS name_en text NOT NULL DEFAULT '';
+ALTER TABLE public.doctors ADD COLUMN IF NOT EXISTS degree_en text NOT NULL DEFAULT '';
+ALTER TABLE public.doctors ADD COLUMN IF NOT EXISTS experience_en text NOT NULL DEFAULT '';
+ALTER TABLE public.doctors ADD COLUMN IF NOT EXISTS schedule_en text NOT NULL DEFAULT '';
+ALTER TABLE public.outlets ADD COLUMN IF NOT EXISTS name_en text NOT NULL DEFAULT '';
+ALTER TABLE public.outlets ADD COLUMN IF NOT EXISTS address_en text NOT NULL DEFAULT '';
+ALTER TABLE public.certifications ADD COLUMN IF NOT EXISTS title_en text NOT NULL DEFAULT '';
+ALTER TABLE public.certifications ADD COLUMN IF NOT EXISTS issuer_en text NOT NULL DEFAULT '';
+ALTER TABLE public.certifications ADD COLUMN IF NOT EXISTS scope_en text NOT NULL DEFAULT '';
+DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname='ecory_play_store_url' AND conrelid='public.site_settings'::regclass) THEN ALTER TABLE public.site_settings ADD CONSTRAINT ecory_play_store_url CHECK (play_store_url = '' OR play_store_url ~ '^https://play[.]google[.]com/store/apps/details[?]id=') NOT VALID; END IF; END $$;
+ALTER TABLE public.banners ADD COLUMN IF NOT EXISTS alt_en text NOT NULL DEFAULT '';
+ALTER TABLE public.products ADD COLUMN IF NOT EXISTS offer_text_en text NOT NULL DEFAULT '';
+ALTER TABLE public.banners ADD COLUMN IF NOT EXISTS image_en text NOT NULL DEFAULT '';
+NOTIFY pgrst, 'reload schema';
+COMMIT;
