@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830877909350",
+    "project_id": "ecory-offer-text-for-app",
+    "storage_bucket": "ecory-offer-text-for-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830877909350:android:6c88b6f269f4db926348a7",
+        "android_client_info": {
+          "package_name": "com.ecory.consumer.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvFVxskiGHLSPaHQQ-ZnGGeOG_31KcOxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

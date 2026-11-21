@@ -1,0 +1,1 @@
+SELECT cron.schedule('ecory-cron-permission-probe', '0 0 1 1 *', 'SELECT 1'); SELECT cron.unschedule('ecory-cron-permission-probe');

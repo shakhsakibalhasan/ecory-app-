@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ecory</string>
+    <string name="title_activity_main">Ecory</string>
+    <string name="package_name">com.ecory.consumer.test</string>
+    <string name="custom_url_scheme">com.ecory.consumer.test</string>
+</resources>

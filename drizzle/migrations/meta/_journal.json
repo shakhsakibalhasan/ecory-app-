@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791627115732,
+      "tag": "0000_test_cron_schedule_permission",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793511290356,
+      "tag": "0001_repair_legacy_doctor_booking_payment",
+      "breakpoints": true
+    }
+  ]
+}
