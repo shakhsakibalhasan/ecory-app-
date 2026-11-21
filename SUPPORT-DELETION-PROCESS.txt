@@ -1,0 +1,16 @@
+ECORY — SUPPORT-এ DELETION REQUEST এলে করণীয়
+
+এই নির্দেশনা কেবল Ecory-এর দায়িত্বপ্রাপ্ত কর্মীর জন্য। Customer-এর তথ্য পাবলিক বা GitHub-এ দেবেন না।
+
+1. ecorybd@gmail.com-এ আসা request গ্রহণ করে customer-কে উত্তর দিন। উত্তর বা deletion completion automatic নয়।
+2. বিদ্যমান registered email বা আগে সংরক্ষিত ফোনে যোগাযোগ করে ownership যাচাই করুন। Password, PIN বা OTP চাইবেন না। অন্য কারও email দাবি করলেই account মুছবেন না। যাচাইয়ের জন্য প্রয়োজনের বেশি তথ্য সংগ্রহ করবেন না।
+3. সংশ্লিষ্ট auth user ID এবং customer দেওয়া অন্য email/phone শনাক্ত করুন। Phone-only account-এ auth-এর internal email এবং profile phone আলাদা থাকতে পারে। নাম এক হলেই একই ব্যক্তি ধরে নেবেন না।
+4. Customer-এর pending order/booking/payment, refund, dispute এবং প্রয়োজনীয় আইনগত রেকর্ড পরীক্ষা করুন। যা রাখতেই হবে তার ধরন, কারণ ও প্রযোজ্য retention period লিখিতভাবে জানান; অপ্রয়োজনীয় personal data রাখবেন না।
+5. কেবল Auth user মুছে দিলেই সব তথ্য যায় না। এই project-এর orders-এ user_id ON DELETE SET NULL আছে: order-এর customer_name, phone, address, note থেকে যায়। অন্যান্য table-ও deployed schema অনুযায়ী যাচাই করতে হবে।
+6. Deletion specialist/admin দিয়ে সংশ্লিষ্ট profile, addresses, favourites, notification preferences/tokens (যেখানে শনাক্তযোগ্য), spin participation/awards, doctor booking/intents/payment payload, uploads/avatar এবং support/SMS records অনুসন্ধান ও প্রয়োজনমতো delete/de-identify করুন। Booking-এর patient JSON, order note বা provider payload-এ personal data থাকতে পারে। Guest spin ও guest order একই phone দিয়ে আলাদাভাবে থাকতে পারে।
+7. শুধু browser cart বা login নয়, server records, uploaded media এবং applicable service-provider records নিয়েও কাজ করতে হবে। Database/media export backup আলাদাভাবে সংরক্ষিত থাকলে সেই lifecycle-ও অনুসরণ করুন।
+8. সব data relationship ও প্রয়োজনীয় retention যাচাই করে authorised Cloud/Supabase admin দিয়ে Auth account delete করুন। চলমান session/cached data ও device notification বন্ধের ব্যবস্থাও পরীক্ষা করুন। বর্তমান update এ কাজ automatic করে না।
+9. Customer-কে কী মুছেছে, কোনো record কী কারণে কতদিন থাকবে এবং completion জানিয়ে reply দিন। কোনো বাধা/বিলম্ব থাকলে জানিয়ে রাখুন। যাচাই ও deletion completion-এর প্রয়োজনীয় audit record অযথা sensitive data ছাড়া রাখুন।
+10. Account deletion ব্যবস্থা public ঘোষণার আগে একটি dummy account দিয়ে end-to-end deletion rehearsal করুন। Production customer data দিয়ে অন্ধভাবে SQL চালাবেন না।
+
+এই patch request path তৈরি করে; data deletion fulfilment চালু রাখা Ecory-এর operational responsibility। প্রয়োজন হলে পরবর্তী ধাপে verified self-service deletion backend তৈরি করা যাবে।

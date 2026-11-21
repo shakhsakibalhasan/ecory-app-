@@ -1,0 +1,53 @@
+ECORY — 15 OCTOBER APP UPDATE
+
+এটি matching-file update ZIP, সম্পূর্ণ project নয়। Node modules বা build output নেই।
+বর্তমান Lovable source commit 48c854e58d7d125b533bf368c9d926a91d803642 মিলিয়ে কাজ করা হয়েছে।
+এখনও GitHub-এ push, Cloud SQL run, function deploy, Publish বা live SMS/payment করা হয়নি।
+
+কী করা হয়েছে
+১. Cart toast: ছোট glass style, header-এর নিচে; cart/heart/notification icon ঢাকবে না।
+২. Admin: ওপরে “Admin-এর নাম / Box label পরিবর্তন” চালু করে menu/heading/field/button-এর নামে চাপুন, নতুন নাম Save করুন। Section অনুযায়ী আলাদা নাম রাখা যায়। Mode বন্ধ করলে সাধারণ কাজ করবে। এতে database key, product/customer data বা permissions বদলায় না।
+৩. Order SMS: final server order amount (promo-সহ), English item name/quantity/unit price, delivery, payment method ও private tracking link-এর queue তৈরি হয়। Provider API adapter সংযোগ বাকি—এখনই live SMS যাবে না।
+৪. Logged-in tracking: নিজের latest order code auto select হবে; একাধিক হলে dropdown থেকে অন্য order বাছতে পারবেন, phone দিয়ে track করবেন। SMS token link থাকলে সেই order details auto load হবে।
+৫. Home entry offer: compact glass rounded popup; Admin → Offer → App খোলার Offer popup থেকে existing visible offer বাছবেন। প্রতি session-এ একবার; click করলে internal Offer details। সাধারণ offer product card বদলানো হয়নি।
+৬. Doctor: Reviews/Clips সরানো; certification-এর আলাদা field/image, training, services, languages, qualifications ও workplace Admin থেকে edit করা যাবে। BMDC নম্বরকে ভিন্ন ধরনের certification হিসেবে দেখানো হয়নি। Certification-এ শুধু যাচাই করা তথ্য দিন। Phone/in-person-এর আলাদা fee/free বজায় আছে। নতুন paid booking server-verified payment ছাড়া তৈরি হয় না। Call action unpaid হলে booking/payment form দেখায়। Free mode-এ payment লাগে না, তবে call করার আগে booking request লাগবে। Phone number জানা থাকলে কোনো app বাইরের manual dialing আটকাতে পারে না।
+৭. Back: Doctor profile-এর manual navigation loop সরানো; app router-এর আগের history entry-তে ফেরে। Native Android back একই router history ব্যবহার করে। Direct entry-তে fallback Home।
+৮. Page header-এর সাধারণ title লেখা লুকানো; page-এর actual product/doctor name, content heading ও back button বজায় আছে।
+৯. Doctor checkout: রোগীর নাম, phone, age, address, concern, online payment ও total। রোগী date/time বাছবে না। Paid verification-এর পরে request, free হলে সরাসরি request। Admin → Doctor booking থেকে serial/date/time/status/note confirm/change/cancel। 12-hour display ও PDF-এ serial; schedule change-এর SMS queue। Actual SMS provider connection বাকি।
+
+প্রথমে কী করবেন
+A. GitHub-এর বর্তমান source backup নিন। ZIP Extract করে src, android, supabase, scripts ও setup-এর matching files replace/add করুন। পুরো repository বা অন্য files delete করবেন না। Commit করুন।
+B. setup/oct15-commerce-doctor.sql নতুন Cloud SQL query-তে সম্পূর্ণ Run করুন। একই migration supabase/migrations-এও আছে; দুবার আলাদা করে Run প্রয়োজন নেই। আগের Daily Repeat SQL ইতিমধ্যে Run থাকা চাই।
+C. DEPLOY-PROMPT.txt অনুযায়ী customer-sms, doctor-payment-start, doctor-payment-callback এবং updated daily-notifications deploy করুন। শুধু GitHub Commit যথেষ্ট নয়। Existing FCM/cron/payment secrets রাখুন; duplicate cron করবেন না।
+D. Publish/Update করে Admin-এ Ctrl+Shift+R করুন।
+E. নতুন UI, native back ও App Links-এর জন্য updated APK build/install লাগবে (versionCode 12, versionName 1.11)। Daily Repeat server-only পরিবর্তনের জন্য আলাদা APK দরকার ছিল না; এই নতুন UI পরিবর্তনের জন্য প্রয়োজন।
+
+Release coordination
+Migration পুরোনো customer booking RPC বন্ধ করে; আগের APK দিয়ে Doctor booking তখন আর হবে না। নতুন APK release-এর সঙ্গে একই সময়ে SQL/function/frontend rollout করুন এবং পুরোনো users-কে update দিন। Product order-এর আগের RPC রাখা হয়েছে। Paid booking আর আগে unpaid request বানাবে না।
+
+Payment live করতে
+Existing SSLCOMMERZ_STORE_ID, SSLCOMMERZ_STORE_PASSWORD, PAYMENT_ENABLED=true এবং প্রয়োজনমতো SSLCOMMERZ_LIVE ব্যবহার হবে। Admin payment switches-এ bKash/Nagad/Online চালু থাকতে হবে। আগে merchant sandbox-এ full payment/IPN test, তারপর live করুন। PIN/OTP কেবল provider checkout-এ, Ecory form-এ নয়। Client redirect একা payment success বানাতে পারে না। Amount/currency/transaction/risk server-এ মেলে।
+পেমেন্ট pending/ambiguous হলে নতুন payment শুরু করার আগে provider ও My bookings যাচাই করুন। Refund/cancellation settlement স্বয়ংক্রিয় করা হয়নি।
+
+SMS live করতে — তথ্য বাকি
+আপনি “অন্য provider আছে” বলেছেন, কিন্তু নাম/API specification দেননি। Provider-এর নাম, official website/API documentation দিন; API key chat-এ দেবেন না। SMS provider-specific adapter না বসা পর্যন্ত SMS চালু করবেন না।
+বর্তমান customer-sms worker-এর secure adapter contract SMS-ADAPTER-CONTRACT.txt-এ আছে। সরাসরি provider URL সেই format না মানলে কাজ করবে না। Provider-এর সঙ্গে format মেলানোর code আরও লাগবে। Credentials শুধু server Secrets-এ।
+Adapter প্রস্তুত হলে SMS_BRIDGE_URL, SMS_BRIDGE_TOKEN server Secrets-এ দিন; তারপর Admin → Settings → Order ও Appointment SMS → Customer SMS চালু করুন। নতুন orders তখন queue হবে। আগে হওয়া orders backfill করে অযাচিত SMS পাঠানো হয় না।
+Order save-এর পরে immediate wake-up আছে; existing every-minute notification cron queue fallback হিসেবে drain করে। ব্যস্ততায় delay হতে পারে; network/provider delivery guaranteed নয়। Cron প্রতি run-এ সর্বোচ্চ 4টি SMS claim করে।
+SMS log accepted মানে provider গ্রহণ করেছে, handset delivery নয়। Timeout/unknown result automatic retry হয় না যাতে duplicate SMS/charge না হয়। 15 মিনিট stuck sending হলে worker unknown দেখাবে। Queue-এর 24 ঘণ্টার বেশি পুরোনো pending SMS automatic পাঠাবে না।
+
+SMS link সরাসরি app-এ খোলার জন্য
+Android manifest intent filters ও appUrlOpen handling যুক্ত আছে। আরও দরকার: সঠিক APK signing certificate-এর SHA-256 fingerprint দিয়ে ecory.app domain verification।
+node scripts/write-android-app-links.mjs SHA256_FINGERPRINT
+এতে public/.well-known/assetlinks.json তৈরি হবে; publish করে https://ecory.app/.well-known/assetlinks.json সঠিক JSON ও HTTP 200 দেয় কি না পরীক্ষা করুন। Private signing key/password দেবেন না। ভুল certificate হলে link browser-এ খুলবে। App install না থাকলেও browser-এ একই tracking page কাজ করবে। Doctor booking details দেখতে account login লাগবে। Tracking token link গোপন রাখুন।
+
+পরীক্ষা
+- TypeScript ও Android web production build সফল।
+- Local PostgreSQL engine-এ migration twice, fee/mode/ownership, paid-before-booking, free booking, payment completion idempotency, call access, schedule SMS/12h, no-op update suppression, promo final bill, private tracking token, queue claim, cancellation ও RPC permissions পরীক্ষা সফল।
+- Mock callback-এ forged success/ভুল amount/currency/transaction/risk আটকানো সফল।
+- Mock SMS authentication, idempotency key, provider response ও missing configuration guard সফল।
+- Admin label editor DOM test-এ rename, input value অক্ষত, edit-mode action interception ও normal actions ফিরে আসা সফল।
+- বাস্তব phone visual layout, native back, payment/IPN, App Links ও SMS handset delivery পরীক্ষা বাকি। Browser download unavailable হওয়ায় পূর্ণ browser screenshot verification হয়নি।
+
+Live checklist
+নতুন APK-এ 320px/390px screen-এ cart toast ও popup দেখুন; header icons press করা যায় কি না দেখুন। Doctor paid/free দু-মোড, patient info, pay verification, serial/time confirm/change/cancel, PDF, phone access পরীক্ষা করুন। Logged-in multiple order tracking এবং SMS token link পরীক্ষা করুন। কোনো live customer-কে test SMS/payment পাঠানোর আগে নিজের test account ব্যবহার করুন।

@@ -1,0 +1,15 @@
+Validation — 18 October 2026
+PASS TypeScript: tsc --noEmit.
+PASS Android web production build: npm run build:android-web (this is not a native APK build).
+PASS web production build: npm run build.
+PASS local PostgreSQL-compatible tests: idempotent installation, guest/authenticated order ownership, server price/delivery/image, product stock, variant stock/disabled/missing/invalid variant, quantity bounds, atomic rollback, public rating aggregation.
+PASS client tests: no stale visual hydration, private-query exclusion, cache expiry, offline-only fallback/recovery, no renewal of offline cache timestamps, shared rating index, modal/page back priority, handler cleanup, bounded query timeout.
+PASS existing spin regression suite: guest draw, linked account ownership, isolated tokens, exact-award redemption, idempotency, rollback, admin participants, dynamic slots and hidden flags.
+
+Not verified: real-device startup time/FPS/memory, physical Android Back interaction, actual native push delivery, live deployed database and production payment gateways. A runnable Chromium binary was unavailable, so no browser screenshot/visual verification is claimed. Phone verification remains necessary after the APK is built.
+
+Leaf-only animation revision: Android web production build and TypeScript passed. Supplied PNG copied byte-for-byte; no replacement artwork. Physical/visual animation test remains pending.
+
+Tips/article revision: web and Android web builds + TypeScript passed. Filter tests passed for tips-only categories, article/saved ignoring category, latest-first ordering, English search and preserving input array. Existing database content was not changed; no new SQL required for this revision. No real-device visual test claimed.
+
+Compact-admin/canonical-Back revision: web production build, Android web production build and TypeScript passed. Sixteen Back destination cases passed; public routes terminate at Home without cycles; Shell/native handlers do not use history.back. Real-device visual/scroll/focus interaction remains unverified. No live deploy or database change performed.

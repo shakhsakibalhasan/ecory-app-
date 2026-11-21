@@ -1,0 +1,17 @@
+SMS PROVIDER ADAPTER — NOT YET CONNECTED
+
+The worker expects a server-only HTTPS adapter configured via SMS_BRIDGE_URL and SMS_BRIDGE_TOKEN. This is NOT a universal SMS provider API. A provider-specific adapter must be implemented after its official API is supplied.
+
+Request: POST over HTTPS
+Authorization: Bearer <server-only token>
+Idempotency-Key: <queue UUID>
+Content-Type: application/json
+{"id":"queue UUID","to":"01xxxxxxxxx","text":"English order or schedule details"}
+
+The adapter must authenticate the bearer token, normalize phone format according to its provider, use the provider's approved sender, apply its API credentials server-side, and deduplicate the queue UUID before requesting an SMS. Never accept arbitrary unauthenticated sends. Honour the Idempotency-Key even after worker timeouts.
+
+Success: HTTP 2xx with {"accepted":true,"message_id":"real provider receipt ID"} only after the provider genuinely accepts the SMS. This is not handset delivery.
+Known rejection: {"accepted":false}.
+Ambiguous/timeout: do not report success; verify the provider receipt before any manual retry.
+
+No real SMS provider URL, API key, sender, paid account, or provider-specific format has been supplied in this request. Those are outstanding.

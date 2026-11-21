@@ -1,0 +1,29 @@
+ECORY — HEALTH TIPS & ADMIN ACTIONS UPDATE
+10 October 2026
+
+WHAT IS INCLUDED
+- Notification panel: separate Offer and Health Tips tabs.
+- Five health-tip sections: morning, noon, afternoon, evening, night.
+- Each section has Bangla/English title and message, optional internal page link, date/time, expiry, Schedule, Send Now, Edit and Delete. Times are Bangladesh time. Each saved tip is a one-time message; add a new dated tip for each next day. Recurring daily rotations and per-user slot preferences are not included.
+- Same message is attempted once per device; distinct messages may reach the same device on the same day. This replaces the old one-push-per-day gate.
+- Scheduled messages are processed every minute; stale messages older than two hours and expired messages are skipped. Screen-off delivery still depends on permissions, device registration, FCM and Android restrictions.
+- Existing Edit buttons have filled brand-green styling; Delete/Remove buttons have filled red styling and white icons. Consumer buttons are unaffected.
+- This cumulative patch includes previous startup/loading fixes, 3-second banners, compact 3-file row, phone-password setup check and restored selectable OTP/Password tabs.
+
+INSTALL — FOLLOW IN ORDER
+1. Extract the ZIP. Upload matching src, package.json, package-lock.json, supabase and setup files to the existing GitHub repository root; replace matching files. Preserve all other files, public fonts/images and the Android project.
+2. Commit. Do not remove existing code or run older SQL migrations again.
+3. In SQL Editor run ONLY supabase/migrations/20261010094500_health_tip_notifications.sql. This adds the required columns, private claim table and service-only function. Existing historical notifications stay in the inbox and are not automatically rebroadcast. Legacy health tips appear in Morning for editing.
+4. Deploy the updated daily-notifications Edge Function with JWT gateway verification disabled; it validates admin bearer tokens and the server cron secret internally. From your configured Supabase CLI: supabase functions deploy daily-notifications --no-verify-jwt . Keep existing FCM_SERVICE_ACCOUNT_JSON. Set a strong NOTIFICATION_CRON_SECRET server secret (at least 32 characters); never upload this secret to GitHub.
+5. In Supabase Vault store the SAME secret under ecory_notification_cron_secret. Run setup/notification-scheduler.sql. It creates/updates the ecory-notification-queue job to run every minute and checks the secret exists. If you already have another notification cron job, check it to avoid redundant invocations; message/device deduplication still applies.
+6. Lovable Publish/Update. Admin > Notifications > turn automatic Schedule ON. Use Health Tips > a time section > enter text/date/time > Schedule, or Send Now. Scheduled future items are visible only to admins until their start time.
+7. Test a NEW message on a registered test phone, then a scheduled message 2–3 minutes in the future. Check delivery logs. Test both app-open and screen-off states. Editing a previously sent message changes inbox content; it does not resend the same ID to devices that already received an attempt. To send another push, create a new message.
+8. Earlier client changes require rebuilding/installing a new APK. This ZIP contains source updates, not an APK.
+
+PHONE ACCOUNT NOTE
+To permit phone+password signup without SMS OTP, enable Phone Auto-confirm SMS in Lovable Cloud > Users > Auth settings > Phone. This hosted setting is still not enabled by the patch alone. OTP and Password tabs remain visible; SMS OTP send needs its provider and admin setting enabled later.
+
+VERIFICATION AND LIMITS
+TypeScript and Android web build passed. Mock tests covered the two tabs/five sections, distinct messages to the same device, duplicate suppression, admin authentication, schedule toggle and future-message exclusion. No real push, SMS or database migration was executed. Live deployment and physical-device tests remain pending. Each message/device has one attempt; failed transport attempts are logged and are not automatically retried. Delivery is not guaranteed at the exact scheduled minute. Existing public font assets must remain in the repository.
+
+Scheduler reference: https://supabase.com/docs/guides/functions/schedule-functions

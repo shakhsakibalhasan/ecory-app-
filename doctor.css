@@ -1,0 +1,1019 @@
+/* Reference-inspired portrait cards and inset panels, scoped to Doctor only. */
+.ecory-doctors {
+  --doctor-ink: #143c30;
+  --doctor-sage: #e6eedc;
+  --doctor-line: #e4e9df;
+  color: var(--doctor-ink);
+  padding: 0 1px 16px;
+}
+.ecory-doctors :is(p, h2, h3) {
+  overflow-wrap: break-word;
+}
+.ecory-doctor-header-actions {
+  display: flex;
+  gap: 8px;
+}
+.ecory-doctor-header-actions button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #e5eadf;
+  color: #244f35;
+}
+.doctor-directory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 0 17px;
+  gap: 12px;
+}
+.doctor-directory-heading > div > span,
+.doctor-profile-kicker {
+  font-size: 9px;
+  letter-spacing: 1.7px;
+  color: #617456;
+}
+.ecory-consumer .doctor-directory-heading h2 {
+  font-size: 23px;
+  margin: 5px 0 0;
+}
+.doctor-count {
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #e7efdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  flex: none;
+}
+.doctor-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #fff;
+  border: 1px solid var(--doctor-line);
+  border-radius: 18px;
+  padding: 6px 7px 6px 13px;
+  margin-bottom: 17px;
+}
+.doctor-search input {
+  min-width: 0;
+  flex: 1;
+  font-size: 13px;
+  background: transparent;
+  outline: none;
+  border: 0;
+  padding: 6px 0;
+}
+.doctor-search button {
+  border-radius: 12px;
+  background: #edf3e6;
+  padding: 9px;
+  color: #355c28;
+}
+.doctor-filter {
+  display: block;
+  font-size: 12px;
+  margin: 0 0 15px;
+}
+.doctor-filter select {
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  border: 1px solid var(--doctor-line);
+  border-radius: 12px;
+  padding: 10px;
+  background: #fff;
+}
+.doctor-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.doctor-portrait-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  background: #dce8d7;
+  border: 1px solid #dce7d8;
+  min-width: 0;
+  overflow: hidden;
+  box-shadow: 0 5px 15px #284a1e09;
+}
+.doctor-portrait-card.is-sage {
+  background: #e5eadc;
+}
+.doctor-card-photo {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #6a8558;
+}
+.doctor-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.doctor-card-caption {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #ffffffed;
+  border-top: 1px solid #ffffffa8;
+  border-radius: 20px 20px 0 0;
+  padding: 12px 11px 11px;
+  margin-top: -17px;
+}
+.ecory-consumer .doctor-card-caption h3 {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0 0 5px;
+}
+.doctor-card-caption > p {
+  font-size: 11px;
+  line-height: 1.5;
+  min-height: 32px;
+}
+.doctor-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  padding-top: 13px;
+  margin-top: auto;
+}
+.doctor-card-bottom > div {
+  min-width: 0;
+}
+.doctor-card-bottom span:not(.doctor-open-arrow) {
+  display: block;
+  font-size: 9px;
+}
+.doctor-card-bottom strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #2d5b36;
+}
+.doctor-open-arrow {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: #163e30;
+  color: #fff;
+  flex: none;
+}
+.doctor-empty {
+  font-size: 14px;
+  padding: 25px 10px;
+  text-align: center;
+}
+.doctor-directory-services {
+  margin: 22px -2px 0;
+  padding: 16px 15px 18px;
+  border: 1px solid #e4e9df;
+  border-radius: 30px;
+  background: #fafbf8;
+}
+.doctor-panel-grip {
+  display: block;
+  height: 3px;
+  width: 31px;
+  border-radius: 10px;
+  background: #294f39;
+  margin: 0 auto 18px;
+  opacity: 0.5;
+}
+.ecory-consumer .doctor-directory-services h2 {
+  font-size: 23px;
+  max-width: 250px;
+  line-height: 1.35;
+  margin: 0 0 6px;
+}
+.doctor-directory-services > p {
+  font-size: 12px;
+  color: #52634a;
+}
+.doctor-directory-services > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 17px;
+}
+.doctor-directory-services article {
+  padding: 17px 12px;
+  border: 1px solid #e3e9db;
+  border-radius: 22px;
+  background: #fff;
+}
+.doctor-directory-services article.is-deep {
+  background: #193e2f;
+  color: #fff;
+  border-color: #193e2f;
+}
+.ecory-consumer .doctor-directory-services article h3 {
+  font-size: 17px;
+  line-height: 1.4;
+  margin: 17px 0 8px;
+}
+.doctor-directory-services article p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.doctor-profile-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 345px;
+  overflow: hidden;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #d7e4ca, #c7d9b9);
+  border: 1px solid #e2eadb;
+}
+.doctor-hero-photo {
+  position: absolute;
+  inset: 0 0 46px 32%;
+  z-index: -1;
+  display: grid;
+  place-items: center;
+  color: #658255;
+}
+.doctor-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(90deg, transparent, #000 28%);
+}
+.doctor-hero-copy {
+  position: relative;
+  width: 58%;
+  min-height: 268px;
+  padding: 46px 8px 25px 17px;
+  background: linear-gradient(90deg, #dbe7d1eb, #dbe7d100);
+}
+.ecory-consumer .doctor-hero-copy h2 {
+  font-size: 25px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  margin: 15px 0 10px;
+}
+.doctor-hero-copy > p {
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 5px 0;
+}
+.doctor-hero-copy .doctor-specialty {
+  font-size: 13px;
+  color: #2d5429;
+}
+.doctor-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  justify-content: flex-end;
+  padding: 12px 13px;
+  border-radius: 24px 24px 0 0;
+  background: #e6efddcf;
+  border-top: 1px solid #ffffff9c;
+  position: relative;
+}
+.doctor-hero-actions button {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: #fffffff0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px #37552907;
+}
+.doctor-hero-actions button.doctor-info-chip {
+  margin-right: auto;
+  width: auto;
+  padding: 0 13px;
+  border-radius: 30px;
+  background: #f5f9eed9;
+  gap: 6px;
+  font-size: 12px;
+}
+.doctor-profile-stat-panel {
+  position: relative;
+  margin: 11px 0 17px;
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+  padding: 15px 9px;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid #e3eadf;
+}
+.doctor-profile-stat-panel:empty {
+  display: none;
+}
+.doctor-profile-stat-panel > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  min-width: 0;
+}
+.doctor-profile-stat-panel strong {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.doctor-profile-stat-panel span {
+  font-size: 10px;
+}
+.doctor-profile-stat-panel svg {
+  color: #527747;
+}
+.doctor-profile-sheet {
+  border-radius: 29px;
+  background: #fafbf8;
+  border: 1px solid #e3e9de;
+  padding: 15px 13px 18px;
+}
+.doctor-profile-tabs {
+  display: flex;
+  border-radius: 14px;
+  background: #eef1e9;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 22px;
+}
+.doctor-profile-tabs button {
+  flex: 1;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 10px 5px;
+  color: #43573a;
+}
+.doctor-profile-tabs button[aria-selected="true"] {
+  background: white;
+  box-shadow: 0 2px 5px #28451e08;
+  color: #1e462e;
+}
+.ecory-consumer .doctor-profile-text h3 {
+  font-size: 17px;
+  margin: 18px 0 7px;
+}
+.doctor-profile-text p {
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.doctor-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 13px;
+  background: #f0f5e9;
+  border-radius: 14px;
+}
+.doctor-location svg {
+  flex: none;
+  margin-top: 3px;
+}
+.doctor-location p {
+  font-size: 12px;
+}
+.doctor-certificate-image {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+.ecory-consumer .doctor-consultation-panel > h3 {
+  font-size: 17px;
+  margin: 25px 0 13px;
+}
+.doctor-mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.doctor-mode-grid button {
+  min-width: 0;
+  text-align: left;
+  position: relative;
+  padding: 16px 12px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #dfe7d8;
+  min-height: 138px;
+}
+.doctor-mode-grid button > span {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 15px 0 5px;
+}
+.doctor-mode-grid strong {
+  display: block;
+  font-size: 19px;
+  color: #355f31;
+}
+.doctor-mode-grid button > svg:last-child {
+  position: absolute;
+  right: 11px;
+  top: 15px;
+}
+.doctor-mode-grid button[aria-pressed="true"] {
+  background: #214c35;
+  color: #fff;
+  border-color: #214c35;
+  box-shadow: 0 3px 9px #1e412412;
+}
+.doctor-mode-grid button[aria-pressed="true"] strong {
+  color: #e3f2cf;
+}
+.doctor-date-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 16px 13px;
+  background: white;
+  border-radius: 19px;
+  border: 1px solid #e3e9dc;
+  margin: 17px 0;
+}
+.doctor-date-panel > svg {
+  flex: none;
+  color: #5e7d46;
+  margin-top: 3px;
+}
+.ecory-consumer .doctor-date-panel h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+}
+.doctor-date-panel p {
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.doctor-admin-note {
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-line;
+  margin: 14px 3px;
+}
+.doctor-call-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #d6e3c9;
+  background: #edf5e4;
+  border-radius: 25px;
+  width: 100%;
+  padding: 12px;
+  font-size: 13px;
+  color: #315a2b;
+  margin: 15px 0;
+}
+.doctor-my-booking {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border: 1px solid #dce6d3;
+  border-radius: 20px;
+  background: #f1f6e9;
+  margin-top: 23px;
+}
+.doctor-booking-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 14px;
+  background: #e0ecd2;
+}
+.doctor-my-booking > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+.doctor-my-booking strong {
+  display: block;
+  font-size: 16px;
+}
+.doctor-my-booking small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 3px;
+}
+.ecory-doctor-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e1e9d8;
+  background: #fffffff5;
+  border-radius: 30px;
+  padding: 8px 8px 8px 19px;
+  box-shadow: 0 5px 16px #2342220b;
+}
+.ecory-doctor-footer > div {
+  min-width: 0;
+  flex: 1;
+}
+.ecory-doctor-footer span {
+  display: block;
+  font-size: 10px;
+  color: #53664a;
+}
+.ecory-doctor-footer strong {
+  font-size: 19px;
+  color: #355f31;
+}
+.ecory-consumer .ecory-doctor-book-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 56%;
+  padding: 13px 16px;
+  border: 0;
+  border-radius: 27px;
+  background: #1b4932;
+  color: #fff;
+  font-size: 14px;
+}
+.ecory-doctor-book-cta:disabled {
+  opacity: 0.5;
+}
+.doctor-checkout-form > section {
+  border: 1px solid #e1e8d9;
+  border-radius: 22px;
+  padding: 17px;
+  background: white;
+}
+.doctor-checkout-form :is(input, textarea) {
+  border-color: #dce5d4;
+  border-radius: 12px;
+  background: #f9fbf6;
+}
+@media (max-width: 350px) {
+  .doctor-directory-grid {
+    gap: 9px;
+  }
+  .doctor-card-photo {
+    height: 160px;
+  }
+  .doctor-card-caption {
+    padding: 11px 8px;
+  }
+  .ecory-consumer .doctor-card-caption h3 {
+    font-size: 14px;
+  }
+  .doctor-card-bottom strong {
+    font-size: 13px;
+  }
+  .doctor-hero-copy {
+    width: 62%;
+    padding-left: 13px;
+  }
+  .ecory-consumer .doctor-hero-copy h2 {
+    font-size: 22px;
+  }
+  .doctor-profile-sheet {
+    padding-inline: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecory-doctors * {
+    scroll-behavior: auto;
+  }
+}
+/* Ecory brand green retained for selection and booking actions. */
+.ecory-doctors {
+  --doctor-ink: #253c1c;
+  --doctor-sage: #edf5e3;
+}
+.doctor-profile-hero {
+  background: linear-gradient(145deg, #edf6dd, #d5eab7);
+}
+.doctor-hero-copy {
+  background: linear-gradient(90deg, #e6f1d8eb, #e6f1d800);
+}
+.doctor-hero-actions {
+  background: #edf5e2d9;
+}
+.doctor-open-arrow,
+.doctor-directory-services article.is-deep {
+  background: #86bf3c;
+  color: #203a10;
+  border-color: #86bf3c;
+}
+.ecory-consumer .ecory-doctor-book-cta {
+  background: #86bf3c;
+  color: #203a10;
+}
+.doctor-mode-grid button[aria-pressed="true"] {
+  background: #edf5e1;
+  border-color: #86bf3c;
+  color: #284719;
+}
+.doctor-mode-grid button[aria-pressed="true"] strong {
+  color: #416b22;
+}
+.doctor-card-profile-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+.doctor-directory-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  background: #86bf3c;
+  color: #203a10;
+  border: 0;
+  border-radius: 13px;
+  margin: 0 10px 11px;
+  padding: 8px;
+  font-size: 13px;
+}
+.doctor-quick-booking {
+  margin-top: 20px;
+  scroll-margin-top: 12px;
+}
+.ecory-consumer .doctor-quick-booking > h2 {
+  font-size: 21px;
+  margin: 0 0 6px;
+}
+.doctor-quick-booking > p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.doctor-schedule-picker {
+  padding: 15px 11px;
+  background: #fafcf6;
+  border: 1px solid #e2ead8;
+  border-radius: 18px;
+  margin: 16px 0;
+}
+.ecory-consumer .doctor-schedule-picker h4 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  margin: 3px 0 13px;
+}
+.doctor-date-options {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 1px 10px;
+  scroll-snap-type: x proximity;
+}
+.doctor-date-options button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 62px;
+  padding: 9px 8px;
+  border: 1px solid #dfe7d5;
+  border-radius: 13px;
+  background: #fff;
+  scroll-snap-align: start;
+}
+.doctor-date-options button small,
+.doctor-date-options button span {
+  font-size: 10px;
+}
+.doctor-date-options button strong {
+  font-size: 22px;
+}
+.doctor-date-options button[aria-pressed="true"] {
+  background: #dceebb;
+  border-color: #86bf3c;
+}
+.doctor-time-options {
+  display: flex;
+  overflow-x: auto;
+  gap: 7px;
+  padding: 0 1px 9px;
+}
+.doctor-time-options button {
+  flex: none;
+  min-width: 74px;
+  border: 1px solid #e2e8dc;
+  border-radius: 9px;
+  padding: 10px 5px 7px;
+  background: #fff;
+}
+.doctor-time-options button > span {
+  display: block;
+  width: 2px;
+  height: 16px;
+  background: #b7c6a7;
+  margin: 0 auto 7px;
+  box-shadow:
+    -7px 4px 0 -0.3px #d0dac6,
+    7px 4px 0 -0.3px #d0dac6;
+}
+.doctor-time-options button strong {
+  font-size: 11px;
+}
+.doctor-time-options button[aria-pressed="true"] {
+  border-color: #86bf3c;
+  background: #eef5e4;
+}
+.doctor-time-options button[aria-pressed="true"] > span {
+  background: #6a9e30;
+}
+.doctor-time-options button:disabled {
+  opacity: 0.4;
+}
+.doctor-slot-note,
+.doctor-manual-schedule {
+  font-size: 12px;
+  line-height: 1.7;
+  padding-top: 10px;
+}
+.doctor-requested-selection {
+  border: 1px solid #d8e6c9;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 12px 0;
+  background: #f2f7eb;
+}
+.doctor-requested-selection > span {
+  font-size: 11px;
+}
+.doctor-requested-selection > p {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Booking history shares the doctor page's soft Ecory surfaces. */
+.doctor-booking-list {
+  display: grid;
+  gap: 16px;
+  padding: 10px 0 24px;
+}
+.doctor-booking-card {
+  background: #fff;
+  border: 1px solid #e4ebdf;
+  border-radius: 25px;
+  padding: 18px;
+  box-shadow: 0 8px 25px #25451808;
+  overflow: hidden;
+}
+.doctor-booking-card-top {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+.doctor-booking-avatar {
+  width: 65px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: 17px;
+  background: #edf4e6;
+  display: grid;
+  place-items: center;
+  color: #557b2c;
+  overflow: hidden;
+}
+.doctor-booking-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.doctor-booking-identity {
+  min-width: 0;
+}
+.doctor-booking-identity h3 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0 0 5px;
+  color: #24391e;
+  overflow-wrap: anywhere;
+}
+.doctor-booking-identity p,
+.doctor-booking-identity > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  color: #34432e;
+}
+.doctor-booking-status-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 16px 0 12px;
+  font-size: 12px;
+}
+.doctor-booking-status {
+  padding: 6px 11px;
+  border-radius: 99px;
+  background: #fff5dd;
+  color: #77500e;
+  border: 1px solid #f1e0b7;
+  font-weight: 500;
+}
+.doctor-booking-status[data-status="confirmed"],
+.doctor-booking-status[data-status="completed"] {
+  background: #edf6e1;
+  border-color: #d8eac2;
+  color: #3e651f;
+}
+.doctor-booking-status[data-status="cancelled"] {
+  background: #fff0ee;
+  border-color: #f1d2cf;
+  color: #a03931;
+}
+.doctor-booking-payment {
+  padding: 5px 9px;
+  border-radius: 9px;
+  background: #f3f5ef;
+  color: #34432e;
+}
+.doctor-booking-appointment {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 13px;
+  background: #f6f8f2;
+  border-radius: 16px;
+}
+.doctor-booking-appointment > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  color: #4f702f;
+  min-width: 0;
+}
+.doctor-booking-appointment span {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #263620;
+  overflow-wrap: anywhere;
+}
+.doctor-booking-appointment small,
+.doctor-booking-card-bottom small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #46533f;
+}
+.doctor-booking-card-bottom {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #edf1e8;
+  padding-top: 14px;
+  margin-top: 14px;
+}
+.doctor-booking-card-bottom strong {
+  display: block;
+  color: #58862c;
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 3px;
+}
+.doctor-booking-card-bottom a,
+.doctor-booking-empty a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #86bf3c;
+  color: #fff;
+  border-radius: 99px;
+  padding: 10px 13px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    transform 0.18s,
+    background 0.18s;
+}
+.doctor-booking-card-bottom a:active {
+  transform: scale(0.97);
+}
+.doctor-booking-note {
+  font-size: 13px;
+  line-height: 1.65;
+  background: #f6f8f2;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-top: 12px;
+  white-space: pre-wrap;
+}
+.doctor-booking-empty {
+  background: #fff;
+  border: 1px solid #e4ebdf;
+  border-radius: 25px;
+  padding: 28px 20px;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+  color: #405c2b;
+}
+@media (max-width: 350px) {
+  .doctor-booking-card {
+    padding: 14px;
+  }
+  .doctor-booking-card-bottom {
+    gap: 8px;
+  }
+  .doctor-booking-card-bottom a {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+/* White directory cards and structured profile detail panels. */
+.doctor-portrait-card,
+.doctor-portrait-card.is-sage {
+  background: #fff;
+}
+.doctor-detail-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #e5ebdf;
+  border-radius: 19px;
+  padding: 17px;
+  margin: 0 0 12px;
+  box-shadow: 0 4px 16px #263d1904;
+}
+.doctor-detail-card > div {
+  min-width: 0;
+  flex: 1;
+}
+.doctor-detail-icon {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 12px;
+  background: #eef5e5;
+  color: #59862b;
+  flex-shrink: 0;
+}
+.ecory-consumer .doctor-detail-card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 7px;
+  color: #263820;
+}
+.doctor-detail-card p {
+  font-size: 14px;
+  line-height: 1.85;
+  margin: 0;
+  color: #263320;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.doctor-profile-text .doctor-location {
+  background: #fff;
+  border: 1px solid #e5ebdf;
+  padding: 16px;
+  border-radius: 19px;
+  margin: 0 0 12px;
+  color: #59862b;
+}
+.doctor-directory-bookings {
+  margin: 20px 0 0;
+  background: #fff;
+  border: 1px solid #dfe9d5;
+}
+.doctor-directory-bookings small {
+  font-size: 12px;
+  line-height: 1.6;
+}

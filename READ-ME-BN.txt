@@ -1,0 +1,24 @@
+Ecory Doctor — স্বাধীন তারিখ/সময় ও Reference UI
+
+১. ZIP Extract করুন। বর্তমান project backup রাখুন। src-এর matching ১০টি file Replace/Add → Commit করুন। পুরো src মুছবেন না।
+২. Supabase SQL Editor-এ setup/DOCTOR-INDEPENDENT-DATE-TIME.sql নতুন query-তে পুরোটা Run করুন। আগে পুরোনো date/time SQL চালালেও এই নতুনটি চালাতে হবে।
+৩. আগের Doctor review SQL চালানো না থাকলে OPTIONAL-DOCTOR-CUSTOMER-REVIEWS.sql-ও Run করুন; আগে চালালে দরকার নেই।
+৪. Lovable Publish/Update করে Admin refresh করুন।
+৫. Admin → Doctor → Edit → বুকিংয়ে তারিখ ও সময় নির্বাচন। প্রতিটি checkbox আলাদা; Save করুন।
+
+কোন ব্যবস্থা কী করবে
+- তারিখ ON / সময় ON: রোগী নিজের তারিখ ও সময় বেছে নেবেন।
+- তারিখ ON / সময় OFF: শুধু তারিখ চাইবে। সময় আপনারা জানাবেন।
+- তারিখ OFF / সময় ON: শুধু সময় চাইবে। তারিখ আপনারা জানাবেন।
+- দুটো OFF: কোনো date/time selection নেই; শুধু রোগীর form।
+
+তারিখ/সময়ের তালিকা Admin-এ লেখা লাগবে না। পুরোনো dates/times arrays থেকে restriction হবে না।
+গ্রাহক ৭ দিনের date cards, আগের/পরের controls, calendar date input, 12-hour time ruler এবং exact time input পাবেন। ভবিষ্যতের যেকোনো বৈধ তারিখ/সময় অনুরোধ করতে পারবেন। দুটো চালু থাকলে অতীত সময় গ্রহণ হবে না। সময় একা চালু থাকলে সেটি শুধু clock time-এর অনুরোধ, কোনো দিন নিশ্চিত করে না।
+গ্রাহকের নির্বাচন requested_date/requested_time-এ থাকবে; এটি final appointment বা reserved slot নয়। আগের Admin confirmation, serial, payment security ও SMS ব্যবস্থা অক্ষত।
+
+UI
+Statistics: একটিমাত্র সাদা rounded panel-এ চার icon; নিচে একটিমাত্র details panel। প্রতিটি about paragraph আলাদা box নয়। Reference-style date card/ruler, Ecory green, হালকা নিরপেক্ষ shared shadow। Product PNG-তে shadow যোগ হয়নি।
+Profile-এর পুরোনো booking date panel নেই। My Booking entry ও actual booking list আগের জায়গায় আছে।
+Doctor real review tab ও actual average rating update আছে।
+
+যাচাই: Build/TypeScript সফল। আলাদা database-এ চার toggle mode, arbitrary time/date, disabled fields strip, invalid/past rejection ও migration rerun পরীক্ষা সফল। Mock browser-এ selector/৩২০–৪৩০px width/no horizontal overflow/চার stats/profile date removal পরীক্ষা হয়েছে। Live database বা GitHub-এ নিজে থেকে বসানো হয়নি। ZIP APK নয়; APK-তে UI পেতে rebuild লাগবে।
