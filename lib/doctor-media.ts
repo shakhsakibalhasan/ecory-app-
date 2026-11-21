@@ -1,0 +1,4 @@
+export type DoctorMedia={id:string;kind:"text"|"image"|"video";url:string;bn:string;en:string};
+export function doctorMedia(value:unknown):DoctorMedia[]{if(!Array.isArray(value))return [];return value.filter((x):x is DoctorMedia=>!!x&&typeof x.id==="string"&&["text","image","video"].includes(x.kind)&&typeof x.url==="string"&&typeof x.bn==="string"&&typeof x.en==="string"&&(x.kind==="text"||safeMediaUrl(x.url)));}
+export function safeMediaUrl(value:string){try{return new URL(value).protocol==="https:";}catch{return false;}}
+export function embeddedVideo(url:string){try{const u=new URL(url);let id="";if(u.hostname==="youtu.be")id=u.pathname.slice(1);else if(["youtube.com","www.youtube.com","m.youtube.com"].includes(u.hostname))id=u.searchParams.get("v")||u.pathname.match(/^\/(?:shorts|embed)\/([^/]+)/)?.[1]||"";if(/^[\w-]{11}$/.test(id))return `https://www.youtube.com/embed/${id}`;}catch{}return null;}
