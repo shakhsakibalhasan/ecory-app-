@@ -1,0 +1,1786 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Ecory design system — soft lime-green wellness app theme.
+ * Light, rounded, mobile-first. All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --font-sans: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.956 0.003 100);
+  --foreground: oklch(0.24 0.01 130);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.01 130);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.01 130);
+  --primary: #86bf3c;
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: #f1f7e9;
+  --secondary: oklch(0.96 0.01 120);
+  --secondary-foreground: oklch(0.24 0.01 130);
+  --muted: oklch(0.95 0.005 110);
+  --muted-foreground: oklch(0.62 0.008 110);
+  --accent: oklch(0.93 0.06 130);
+  --accent-foreground: #86bf3c;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.91 0.005 110);
+  --input: oklch(0.91 0.005 110);
+  --ring: oklch(0.74 0.17 130);
+  --ink: oklch(0.22 0.01 130);
+}
+
+.dark {
+  --background: oklch(0.18 0.01 130);
+  --foreground: oklch(0.96 0.005 110);
+  --card: oklch(0.24 0.012 130);
+  --card-foreground: oklch(0.96 0.005 110);
+  --popover: oklch(0.24 0.012 130);
+  --popover-foreground: oklch(0.96 0.005 110);
+  --primary: #86bf3c;
+  --primary-foreground: oklch(0.18 0.01 130);
+  --primary-soft: oklch(0.3 0.05 130);
+  --secondary: oklch(0.28 0.015 130);
+  --secondary-foreground: oklch(0.96 0.005 110);
+  --muted: oklch(0.28 0.015 130);
+  --muted-foreground: oklch(0.7 0.01 110);
+  --accent: oklch(0.3 0.05 130);
+  --accent-foreground: oklch(0.96 0.005 110);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.76 0.17 130);
+  --ink: oklch(0.96 0.005 110);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Soft lime gradient used by the promo banner and Health Tips card */
+@utility bg-banner {
+  background: linear-gradient(
+    120deg,
+    oklch(0.72 0.17 133) 0%,
+    oklch(0.77 0.15 127) 55%,
+    oklch(0.82 0.12 122) 100%
+  );
+}
+
+@utility shadow-soft {
+  box-shadow: 0 8px 24px -14px oklch(0.3 0.04 130 / 10%);
+}
+
+@utility shadow-pill {
+  box-shadow: 0 4px 14px -8px oklch(0.3 0.04 130 / 12%);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility motion-card {
+  animation: card-rise 0.16s ease-out both;
+}
+
+@utility overscroll-soft {
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+}
+
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Reusable banner container: small shallow bottom-centre curve (80px x 7px) */
+.banner-mask {
+  --curve: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8' preserveAspectRatio='none'%3E%3Cpath d='M0 0H80V8H72Q68 8 66 4L64 2Q63 1 60 1H20Q17 1 16 2L14 4Q12 8 8 8H0Z'/%3E%3C/svg%3E");
+  -webkit-mask:
+    linear-gradient(#000, #000) top / 100% calc(100% - 8px) no-repeat,
+    var(--curve) bottom center / 80px 8px no-repeat,
+    linear-gradient(#000, #000) bottom left / calc(50% - 40px) 8px no-repeat,
+    linear-gradient(#000, #000) bottom right / calc(50% - 40px) 8px no-repeat;
+  mask:
+    linear-gradient(#000, #000) top / 100% calc(100% - 8px) no-repeat,
+    var(--curve) bottom center / 80px 8px no-repeat,
+    linear-gradient(#000, #000) bottom left / calc(50% - 40px) 8px no-repeat,
+    linear-gradient(#000, #000) bottom right / calc(50% - 40px) 8px no-repeat;
+}
+
+/* Stable geometry lets labels move instead of changing flex direction. */
+.ecory-nav-item {
+  transition:
+    flex 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 240ms ease;
+}
+.ecory-nav-icon {
+  left: 50%;
+  top: 7px;
+  transform: translateX(-50%);
+  transition:
+    left 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ecory-nav-label {
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  transition:
+    left 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    bottom 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ecory-nav-item.is-active .ecory-nav-icon {
+  left: 6px;
+  top: 14px;
+  transform: translateX(0);
+}
+.ecory-nav-item.is-active .ecory-nav-label {
+  left: 35px;
+  right: 5px;
+  bottom: 23px;
+  transform: translateX(0);
+  text-align: left;
+}
+
+/* Storefront shape refresh; keep admin independently styled. */
+.ecory-consumer {
+  --radius: 0.5rem;
+}
+.ecory-consumer main [class*="rounded-2xl"],
+.ecory-consumer main [class*="rounded-3xl"],
+.ecory-consumer main [class*="rounded-4xl"],
+.ecory-consumer main [class*="rounded-["] {
+  border-radius: 10px;
+}
+.ecory-consumer main button.rounded-full,
+.ecory-consumer main a.rounded-full,
+.ecory-consumer main label.rounded-full {
+  border-radius: 8px;
+}
+.ecory-consumer .ecory-order-bar,
+.ecory-consumer .ecory-order-bar button,
+.ecory-consumer nav .rounded-full,
+.ecory-consumer .ecory-round-icon {
+  border-radius: 9999px;
+}
+.product-card img {
+  filter: none;
+  box-shadow: none;
+}
+.offer-ticker {
+  background: linear-gradient(110deg, #f6faee, #edf5de);
+  box-shadow: 0 3px 12px rgb(68 94 30 / 5%);
+}
+.offer-ticker-motion {
+  display: inline-block;
+  min-width: max-content;
+  padding-left: 100%;
+  animation: ecory-offer-slide 28s linear infinite;
+}
+
+@keyframes ecory-offer-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offer-ticker-motion {
+    animation: none;
+    padding-left: 12px;
+    white-space: normal;
+  }
+}
+
+/* Active nav labels grow after sliding beside the icon. */
+.ecory-nav-label {
+  transition:
+    left 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    bottom 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    font-size 320ms ease;
+}
+.ecory-nav-item.is-active .ecory-nav-label {
+  font-size: 12px;
+  font-weight: 800;
+  bottom: 22px;
+}
+
+/* One font for Bangla/Latin labels, taka glyphs and digits in the consumer app. */
+.ecory-consumer {
+  --font-sans: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
+}
+.ecory-consumer .ecory-price {
+  color: #86bf3c;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-synthesis: none;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.ecory-consumer .ecory-number {
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.65;
+  white-space: nowrap;
+}
+
+/* Reference-inspired authentication layout, with Ecory brand assets. */
+.customer-auth {
+  position: relative;
+  isolation: isolate;
+  padding-inline: 4px;
+}
+.customer-auth::before {
+  content: "";
+  position: absolute;
+  inset: -32px -20px -24px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 100% 0%, #eaf3db 0%, transparent 44%),
+    radial-gradient(ellipse at 0% 100%, #e5f8ee 0%, transparent 50%);
+}
+.ecory-auth-login {
+  padding-top: clamp(24px, 7vh, 64px);
+}
+.ecory-auth-signup {
+  padding-top: 12px;
+}
+.ecory-auth-logo {
+  background: #f7f7f5;
+  border-radius: 20px;
+}
+.ecory-auth-form {
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #23351a06;
+}
+.ecory-auth-tabs {
+  border-radius: 14px;
+}
+.ecory-auth-tab {
+  border-radius: 11px;
+  transition: background-color 180ms ease;
+}
+.ecory-auth-field {
+  border-radius: 14px;
+  background: #f7f7f7;
+  border-color: #d7d7d7;
+}
+.ecory-auth-field > svg {
+  flex-shrink: 0;
+  color: #86bf3c;
+}
+.ecory-auth-field:focus-within {
+  border-color: #86bf3c;
+  box-shadow: 0 0 0 2px #86bf3c20;
+}
+.ecory-auth-field input,
+.ecory-auth-field textarea {
+  line-height: 1.65;
+}
+.ecory-auth-submit {
+  border-radius: 14px;
+}
+@media (max-height: 620px) {
+  .ecory-auth-login {
+    padding-top: 12px;
+  }
+}
+
+/* Language-specific typography. */
+.ecory-consumer:lang(en) {
+  --font-sans: "Open Sans", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Open Sans", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+}
+.ecory-consumer:lang(en) h1,
+.ecory-consumer:lang(en) h2,
+.ecory-consumer:lang(en) h3,
+.ecory-consumer:lang(en) h4 {
+  font-family: var(--font-display);
+}
+
+/* Light press feedback without changing layout or existing transforms. */
+:where(button, a[href], [role="button"]) {
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    scale 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    opacity 160ms ease;
+}
+:where(button, a[href], [role="button"]):not(:disabled):not([aria-disabled="true"]):active {
+  scale: 0.975;
+}
+.ecory-consumer .ecory-nav-item {
+  transition:
+    flex 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 240ms ease,
+    scale 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ecory-review-button {
+  background: linear-gradient(115deg, #caec94, #b9df7d);
+  box-shadow: 0 3px 9px rgb(77 109 30 / 13%);
+}
+.ecory-review-button:focus-visible {
+  outline: 2px solid #6b9c2f;
+  outline-offset: 3px;
+}
+@media (hover: hover) {
+  .ecory-review-button:hover {
+    box-shadow: 0 4px 12px rgb(77 109 30 / 22%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(button, a[href], [role="button"]):active {
+    scale: 1;
+  }
+}
+
+/* Oct 5: role sizes are editable; packaging cutouts remain shadow-free. */
+.ecory-section {
+  border: 1px solid #e9ece4;
+  border-radius: 18px;
+  background: white;
+  padding: 18px;
+  box-shadow:
+    0 2px 6px rgb(30 50 20 / 3%),
+    0 8px 20px rgb(30 50 20 / 3%);
+}
+.ecory-section-title {
+  font-size: var(--ecory-title-size, 18px);
+  font-weight: 600;
+  color: #537c28;
+}
+.ecory-item-row {
+  box-shadow: 0 2px 8px rgb(30 50 20 / 3%);
+}
+.ecory-consumer {
+  font-size: var(--ecory-body-size, 14px);
+}
+.ecory-consumer .ecory-product-name {
+  font-size: var(--ecory-product-size, 15px);
+  height: auto;
+  min-height: 1.4em;
+}
+.ecory-consumer h1 {
+  font-size: var(--ecory-title-size, 18px);
+}
+.ecory-consumer .ecory-detail-heading {
+  font-size: var(--ecory-title-size, 18px);
+}
+.ecory-consumer .ecory-detail-text {
+  font-size: var(--ecory-detail-size, 15px);
+  line-height: 1.85;
+}
+.ecory-consumer .ecory-detail-price {
+  font-size: var(--ecory-price-size, 20px);
+}
+.ecory-consumer button:not(.ecory-nav-item),
+.ecory-primary-action {
+  font-size: var(--ecory-button-size, 13px);
+}
+.ecory-consumer .ecory-nav-label {
+  font-size: var(--ecory-navigation-size, 10px);
+}
+.ecory-consumer .ecory-nav-item.is-active .ecory-nav-label {
+  left: 34px;
+  right: 9px;
+  padding: 0;
+  font-size: calc(var(--ecory-navigation-size, 10px) + 1px);
+  font-weight: 600;
+  transform: none;
+}
+.ecory-consumer .ecory-nav-item.is-active .ecory-nav-icon {
+  left: 9px;
+  width: 20px;
+}
+.ecory-best-selling {
+  box-shadow: 0 2px 5px rgb(30 50 20 / 12%);
+}
+.ecory-contact-icon {
+  box-shadow:
+    0 3px 8px rgb(25 55 20 / 15%),
+    0 1px 3px rgb(25 55 20 / 9%);
+}
+.ecory-contact-icon > img {
+  border-radius: 9999px;
+}
+.ecory-empty-illustration {
+  color: #537c28;
+  background: radial-gradient(circle at 20% 10%, #efe9cf, #d6ecc3 70%);
+  box-shadow: 0 10px 35px rgb(160 180 90 / 10%);
+}
+.ecory-recommendation {
+  background: linear-gradient(110deg, #f2eee1, #e6f2e0);
+}
+.offer-ticker {
+  background: #f5f8ef;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: var(--ecory-offer-size, 15px);
+}
+.offer-ticker[role="link"] {
+  cursor: pointer;
+}
+.offer-ticker-motion {
+  animation-play-state: running;
+}
+.offer-ticker:focus-visible {
+  outline: 2px solid #86bf3c;
+  outline-offset: 3px;
+}
+.ecory-consumer .product-card {
+  padding-top: 10px;
+}
+.ecory-consumer .product-card .ecory-price {
+  font-weight: 600;
+}
+
+.ecory-consumer
+  .text-sm:not(.ecory-product-name):not(.ecory-detail-price):not(.ecory-detail-text):not(
+    .ecory-section-title
+  ) {
+  font-size: var(--ecory-body-size, 14px);
+}
+.ecory-consumer .text-xs {
+  font-size: calc(var(--ecory-body-size, 14px) * 6 / 7);
+}
+.ecory-consumer .product-card .ecory-price,
+.ecory-consumer .ecory-item-row .ecory-price {
+  font-size: calc(var(--ecory-price-size, 20px) * 0.75);
+}
+
+/* Oct 5 follow-up: inset navigation, readable text and consistent contact logos. */
+.ecory-consumer {
+  --foreground: #000;
+  --muted-foreground: #000;
+  color: #000;
+}
+.ecory-consumer [class*="text-muted-foreground"],
+.ecory-consumer [class*="text-gray-"],
+.ecory-consumer [class*="text-slate-"],
+.ecory-consumer [class*="text-zinc-"],
+.ecory-consumer [class*="text-neutral-"],
+.ecory-consumer [class*="text-stone-"],
+.ecory-consumer [class*="text-black/"] {
+  color: #000;
+}
+.ecory-consumer ::placeholder {
+  color: #000;
+  opacity: 1;
+}
+.ecory-consumer .ecory-nav-item.is-active .ecory-nav-icon {
+  left: 14px;
+  width: 18px;
+}
+.ecory-consumer .ecory-nav-item.is-active .ecory-nav-label {
+  left: 37px;
+  right: 12px;
+  text-align: left;
+}
+.ecory-consumer .ecory-contact-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.ecory-contact-icon > svg {
+  width: 22px;
+  height: 22px;
+}
+.ecory-consumer .product-card .ecory-product-name {
+  height: auto;
+  min-height: 0;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+.offer-ticker {
+  cursor: pointer;
+  text-decoration: none;
+}
+.offer-ticker-motion {
+  pointer-events: none;
+}
+.ecory-discount-pill {
+  box-shadow: 0 1px 3px rgb(40 70 20 / 8%);
+  letter-spacing: 0.01em;
+}
+
+/* Readable descriptions/helper copy; preserve brand prices and contrast actions. */
+.ecory-consumer .ecory-detail-text,
+.ecory-consumer [class*="text-muted-foreground"],
+.ecory-consumer [class*="text-gray-"],
+.ecory-consumer [class*="text-slate-"],
+.ecory-consumer [class*="text-zinc-"],
+.ecory-consumer [class*="text-neutral-"],
+.ecory-consumer [class*="text-stone-"] {
+  color: #000 !important;
+  opacity: 1;
+}
+.ecory-consumer del {
+  color: #000 !important;
+  font-weight: 700;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 1px;
+}
+.ecory-consumer .ecory-one-line,
+.ecory-consumer .ecory-one-line * {
+  font-weight: 700 !important;
+}
+
+/* Shared helper-copy token also covers menus/dialogs rendered in a portal. */
+:root {
+  --muted-foreground: #000;
+}
+[class*="text-muted-foreground"] {
+  color: #000 !important;
+}
+
+/* Alpha-mask keeps the uploaded shape; colour is controlled by interaction state. */
+.ecory-uploaded-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: #000;
+  mask-mode: alpha;
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  transition: background-color 160ms ease;
+}
+/* Calmer hierarchy: body regular, key labels semibold; only 1/১ lines bold. */
+.ecory-consumer .font-bold,
+.ecory-consumer .font-extrabold {
+  font-weight: 600;
+}
+.ecory-consumer .font-semibold {
+  font-weight: 500;
+}
+.ecory-consumer .ecory-detail-text {
+  font-weight: 400;
+}
+.ecory-consumer .ecory-price {
+  font-weight: 600;
+}
+.ecory-consumer del {
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgb(0 0 0 / 32%);
+  text-decoration-style: solid;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ecory-consumer .product-card del {
+  font-size: 12px;
+}
+.ecory-consumer del.ecory-number {
+  font-size: 16px;
+}
+.ecory-consumer .ecory-discount-pill {
+  background-color: #86bf3c;
+  border-color: #86bf3c;
+  color: #fff !important;
+  font-weight: 600;
+}
+.ecory-consumer .ecory-discount-pill * {
+  color: inherit;
+}
+/* Keep explicit number-line emphasis above the calm hierarchy. */
+.ecory-consumer .ecory-one-line,
+.ecory-consumer .ecory-one-line * {
+  font-weight: 700 !important;
+}
+
+/* Only bottom navigation recolours icons. */
+.ecory-nav-item.is-active .ecory-uploaded-icon,
+.ecory-nav-item:active .ecory-uploaded-icon {
+  background-color: #fff;
+}
+.ecory-nav-item.is-active .ecory-icon-fallback,
+.ecory-nav-item.is-active svg {
+  color: #fff !important;
+}
+.ecory-original-icon {
+  background: transparent;
+  filter: none;
+}
+
+/* Unified, light surface elevation; product cutouts never receive a shadow. */
+:root {
+  --ecory-surface-shadow: 0 2px 10px rgb(25 45 20 / 4%);
+}
+.ecory-section,
+.ecory-item-row,
+.ecory-contact-icon,
+.ecory-best-selling,
+.ecory-auth-form,
+.ecory-empty-illustration,
+.ecory-discount-pill,
+.shadow-sm,
+.shadow-md,
+.shadow-lg,
+.shadow-xl,
+.shadow-2xl,
+.shadow-soft,
+.shadow-pill,
+.ecory-admin .bg-card,
+.admin-header {
+  box-shadow: var(--ecory-surface-shadow);
+}
+.ecory-doctor-card {
+  box-shadow: var(--ecory-surface-shadow);
+}
+
+.ecory-review-button,
+.ecory-review-button:hover {
+  box-shadow: var(--ecory-surface-shadow);
+}
+
+.ecory-doctor-specialty {
+  clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%);
+}
+
+/* Ecory store reference: forest green actions and quiet, structured choices. */
+.ecory-consumer {
+  --ecory-action: #86bf3c;
+  --ecory-action-hover: #79ae35;
+  --ecory-action-border: #b8cbbc;
+}
+.ecory-consumer .ecory-action-primary,
+.ecory-consumer .ecory-action-secondary {
+  border: 1px solid var(--ecory-action-border);
+  border-radius: 8px;
+  min-height: 44px;
+  font-weight: 600;
+  line-height: 1.35;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 160ms ease;
+}
+.ecory-consumer .ecory-action-primary {
+  background: linear-gradient(135deg, #86bf3c, #86bf3c);
+  border-color: #86bf3c;
+  color: #fff;
+}
+.ecory-consumer .ecory-action-secondary {
+  background: #f1f7e9;
+  color: #86bf3c;
+}
+.ecory-consumer .ecory-action-primary:not(:disabled):hover {
+  background: #79ae35;
+}
+.ecory-consumer .ecory-action-secondary:not(:disabled):hover {
+  background: #e3ecd9;
+  border-color: #86bf3c;
+}
+.ecory-consumer .ecory-action-primary:not(:disabled):active,
+.ecory-consumer .ecory-action-secondary:not(:disabled):active {
+  transform: scale(0.98);
+}
+.ecory-consumer .ecory-card-action {
+  width: 100%;
+  gap: 7px;
+  padding: 10px 8px;
+}
+.ecory-consumer .ecory-floating-action {
+  border-radius: 9999px;
+  padding-inline: 13px;
+}
+.ecory-consumer .ecory-variant-option {
+  position: relative;
+  min-width: 0;
+  min-height: 68px;
+  padding: 11px 13px;
+  text-align: left;
+  border: 1px solid #dce5d5;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  box-shadow: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+.ecory-consumer .ecory-variant-option > span:first-child {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding-right: 14px;
+}
+.ecory-consumer .ecory-variant-option > span:last-child {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #86bf3c;
+}
+.ecory-consumer .ecory-variant-option[aria-pressed="true"] {
+  background: #f2f7eb;
+  border-color: #86bf3c;
+  box-shadow: inset 0 0 0 1px #86bf3c;
+}
+.ecory-consumer .ecory-variant-option[aria-pressed="true"]::after {
+  content: "✓";
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  color: #477536;
+  font-size: 13px;
+}
+.ecory-consumer .ecory-variant-option:hover {
+  border-color: #86bf3c;
+}
+.ecory-consumer .ecory-action-primary:focus-visible,
+.ecory-consumer .ecory-action-secondary:focus-visible,
+.ecory-consumer .ecory-variant-option:focus-visible {
+  outline: 2px solid #86bf3c;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecory-consumer .ecory-action-primary,
+  .ecory-consumer .ecory-action-secondary,
+  .ecory-consumer .ecory-variant-option {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Latest reference corrections: round back control and compact filled choices. */
+:root {
+  --primary: #86bf3c;
+  --primary-foreground: #fff;
+  --primary-soft: #f1f7e9;
+  --accent-foreground: #86bf3c;
+  --ring: #86bf3c;
+}
+.ecory-consumer .ecory-back-button {
+  border-radius: 9999px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  background: #fff;
+  color: #86bf3c;
+}
+.ecory-consumer .ecory-variant-option {
+  min-height: 54px;
+  padding: 8px 10px;
+}
+.ecory-consumer .ecory-variant-option > span:first-child {
+  font-size: 12px;
+}
+.ecory-consumer .ecory-variant-option > span:last-child {
+  font-size: 15px;
+}
+.ecory-consumer .ecory-variant-option[aria-pressed="true"] {
+  background: #86bf3c;
+  border-color: #86bf3c;
+  box-shadow: none;
+  color: #fff;
+}
+.ecory-consumer .ecory-variant-option[aria-pressed="true"] > span,
+.ecory-consumer .ecory-variant-option[aria-pressed="true"] > span *,
+.ecory-consumer .ecory-variant-option[aria-pressed="true"]::after {
+  color: #fff;
+}
+
+/* Exact lime from the latest supplied navigation reference (#86BF3C). */
+.ecory-consumer .ecory-action-primary {
+  background: linear-gradient(135deg, #86bf3c, #7eb537);
+  border-color: #86bf3c;
+  color: #fff;
+}
+.ecory-consumer .ecory-action-secondary {
+  color: #4d741c;
+}
+.ecory-consumer .ecory-back-button {
+  color: #000;
+}
+.ecory-consumer .ecory-variant-option > span:last-child {
+  color: #4d741c;
+}
+.ecory-consumer .ecory-variant-option[aria-pressed="true"] > span:last-child {
+  color: #fff;
+}
+
+/* Three compact square choices per visible row; further sizes stay on this row. */
+.ecory-consumer .ecory-variant-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 12px) / 3);
+  gap: 6px;
+  overflow-x: auto;
+  padding: 3px 1px 7px;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+}
+.ecory-consumer .ecory-variant-grid .ecory-variant-option {
+  min-height: 48px;
+  padding: 6px;
+  border-radius: 8px;
+  text-align: center;
+  scroll-snap-align: start;
+}
+.ecory-consumer .ecory-variant-grid .ecory-variant-option > span:first-child {
+  font-size: 11px;
+  line-height: 1.35;
+  padding-right: 0;
+  overflow-wrap: anywhere;
+}
+.ecory-consumer .ecory-variant-grid .ecory-variant-option > span:last-child {
+  font-size: 14px;
+  line-height: 1.35;
+}
+.ecory-consumer .ecory-variant-grid .ecory-variant-option[aria-pressed="true"]::after {
+  content: none;
+}
+
+/* Consistent, visible admin record actions; consumer buttons are unaffected. */
+.ecory-admin .admin-edit-button,
+.ecory-admin .admin-delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 8px 12px !important;
+  border-radius: 9px !important;
+  border: 0 !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  color: #fff !important;
+  box-shadow: 0 1px 3px #00000012;
+}
+.ecory-admin .admin-edit-button {
+  background: #599527 !important;
+}
+.ecory-admin .admin-delete-button {
+  background: #dc2626 !important;
+}
+.ecory-admin .admin-edit-button:hover {
+  background: #477d1e !important;
+}
+.ecory-admin .admin-delete-button:hover {
+  background: #b91c1c !important;
+}
+.ecory-admin .admin-edit-button:focus-visible,
+.ecory-admin .admin-delete-button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+.ecory-admin .admin-edit-button:disabled,
+.ecory-admin .admin-delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ecory-admin .admin-edit-button svg,
+.ecory-admin .admin-delete-button svg {
+  color: inherit !important;
+}
+
+/* Compact glass feedback sits below header actions, not over them. */
+[data-sonner-toaster].ecory-toaster {
+  --width: min(228px, calc(100vw - 64px));
+  width: var(--width) !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+[data-sonner-toaster].ecory-toaster [data-sonner-toast] {
+  min-height: 38px !important;
+  padding: 9px 13px !important;
+  gap: 8px !important;
+  font-size: 12px !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  color: #172514 !important;
+  box-shadow: 0 5px 20px #1b32121a !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.ecory-entry-offer {
+  width: calc(100vw - 32px);
+  max-width: 420px;
+  max-height: calc(100dvh - 48px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid #ffffffdb;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 18px 60px #14220f30;
+}
+.ecory-entry-offer > button:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #f1f4ee;
+  color: #172514;
+  opacity: 1;
+}
+@media (max-height: 650px) {
+  .ecory-entry-offer {
+    max-width: 350px;
+    gap: 10px;
+    padding: 16px;
+  }
+  .ecory-entry-offer > a.aspect-square {
+    max-height: 38dvh;
+    aspect-ratio: auto;
+    height: 260px;
+  }
+}
+
+@media (min-width: 768px) {
+  [data-sonner-toaster].ecory-toaster {
+    top: 104px !important;
+  }
+}
+
+/* Oct17: brand-filled ticker and centered Spin & Win. */
+.offer-ticker {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+.offer-ticker .offer-ticker-icon,
+.offer-ticker .offer-ticker-motion,
+.offer-ticker span,
+.offer-ticker svg {
+  color: #fff !important;
+}
+.offer-ticker-icon {
+  background: transparent !important;
+}
+.ecory-spin-modal {
+  --spin-green: var(--primary);
+  width: calc(100vw - 28px);
+  max-width: 480px;
+  max-height: calc(100dvh - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid #e7eadd;
+  background: linear-gradient(145deg, #fbfdf6, #edf7ef);
+  color: #152e20;
+  box-shadow: 0 24px 80px #112c2440;
+}
+.ecory-spin-modal > button:last-child {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  color: #173c29;
+  opacity: 1;
+  z-index: 4;
+}
+.ecory-spin-modal.is-spinning > button:last-child {
+  visibility: hidden;
+}
+.ecory-spin-kicker {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #386747;
+  padding: 0 20px;
+}
+.ecory-spin-wheel-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 4px auto 0;
+  aspect-ratio: 1;
+}
+.ecory-spin-wheel {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 14px #173c2926);
+  transition: transform 5.2s cubic-bezier(0.12, 0.75, 0.14, 1);
+}
+.ecory-spin-pointer {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: -4px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 30px solid #b78627;
+  filter: drop-shadow(0 2px 1px #fff);
+}
+.ecory-spin-cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 5px 14px #174b3020;
+}
+.ecory-spin-cta:disabled {
+  opacity: 0.7;
+}
+.ecory-spin-reward {
+  position: relative;
+  z-index: 1;
+  background: #ffffffef;
+  border: 1px solid #e0e9d9;
+  border-radius: 22px;
+  padding: 22px;
+}
+.ecory-spin-confetti {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  z-index: 3;
+}
+.ecory-spin-confetti i {
+  position: absolute;
+  top: -25px;
+  width: 7px;
+  height: 13px;
+  animation: ecory-confetti-fall linear 3 both;
+}
+@keyframes ecory-confetti-fall {
+  0% {
+    top: -5%;
+    rotate: 0deg;
+    translate: -10px 0;
+  }
+  100% {
+    top: 110%;
+    rotate: 720deg;
+    translate: 24px 0;
+  }
+}
+@media (max-height: 680px) {
+  .ecory-spin-wheel-wrap {
+    max-width: 240px;
+  }
+  .ecory-spin-modal {
+    padding: 18px;
+    gap: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecory-spin-wheel {
+    transition-duration: 0.01ms;
+  }
+  .ecory-spin-confetti {
+    display: none;
+  }
+}
+.ecory-spin-coupon {
+  margin-top: 18px;
+  border: 1px dashed var(--primary);
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+  background: var(--primary-soft);
+  color: #173c29;
+}
+.ecory-spin-modal.is-winner {
+  background: linear-gradient(145deg, #f4fbef, #e3f1df);
+}
+
+/* Supplied leaf rises into a transparent circle. No icon tile, fill, text or shadow. */
+.ecory-startup {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  background: var(--background, #fff);
+}
+.ecory-startup-icon {
+  width: 108px;
+  height: 108px;
+  overflow: visible;
+}
+.ecory-startup-leaf {
+  opacity: 0;
+  transform: translateY(140px);
+}
+.ecory-startup-ready .ecory-startup-leaf {
+  animation: ecory-leaf-rise 0.85s cubic-bezier(0.18, 0.75, 0.25, 1) both;
+}
+@keyframes ecory-leaf-rise {
+  from {
+    transform: translateY(140px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecory-startup-ready .ecory-startup-leaf {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Consumer refinement: quiet surfaces, readable regular typography and one
+   Bengali digit face. No text-node mutation or whole-line bolding. */
+@font-face {
+  font-family: "Ecory Bengali One Regular";
+  src: url("/fonts/ecory-tatsam-book.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+09E7;
+}
+@font-face {
+  font-family: "Ecory Bengali One Regular";
+  src: url("/fonts/ecory-tatsam-medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  unicode-range: U+09E7;
+}
+.ecory-consumer {
+  --ecory-one-font: "Ecory Bengali One Regular";
+  font-family: var(--ecory-one-font), var(--font-sans);
+  font-weight: 400;
+  color: #202820;
+}
+.ecory-consumer
+  :is(
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    strong,
+    b,
+    small,
+    a,
+    button,
+    label,
+    input,
+    textarea,
+    select,
+    del,
+    li,
+    dt,
+    dd,
+    legend,
+    time
+  ) {
+  font-family: var(--ecory-one-font), var(--font-sans);
+  font-weight: 400 !important;
+  font-synthesis: none;
+}
+.ecory-consumer .ecory-one-line,
+.ecory-consumer .ecory-one-line * {
+  font-weight: 400 !important;
+}
+.ecory-consumer main {
+  font-size: 15px;
+  line-height: 1.65;
+}
+.ecory-consumer .ecory-product-name {
+  font-size: 16px;
+  line-height: 1.45;
+}
+.ecory-consumer .ecory-price {
+  font-size: 19px;
+  color: #4b7728;
+}
+.ecory-consumer .ecory-detail-price {
+  font-size: 25px;
+}
+.ecory-consumer .ecory-detail-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #293029;
+}
+.ecory-consumer .ecory-detail-heading {
+  font-size: 17px;
+}
+.ecory-consumer :is(.ecory-item-row, .ecory-recommendation) {
+  border: 1px solid #e6eae2;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 12px #253c1c06;
+}
+.ecory-consumer .ecory-item-row {
+  box-shadow: 0 2px 7px #253c1c04;
+}
+.ecory-consumer :is(.ecory-action-primary, .ecory-review-submit) {
+  background: linear-gradient(160deg, #719f38, #57892b);
+  border: 1px solid #638f30;
+  color: white;
+  box-shadow: 0 2px 5px #486f2114;
+}
+.ecory-consumer .ecory-action-secondary {
+  background: #eef5e5;
+  color: #355824;
+  border: 1px solid #d9e5cd;
+  box-shadow: none;
+}
+.ecory-consumer .ecory-variant-option {
+  border: 1px solid #dfe5d8;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+  min-height: 52px;
+  padding: 8px 5px;
+}
+.ecory-consumer .ecory-variant-option[aria-pressed="true"] {
+  background: #5e8f30;
+  border-color: #5e8f30;
+  color: #fff;
+  box-shadow: 0 2px 5px #446a1c12;
+}
+.ecory-consumer .ecory-variant-grid .ecory-variant-option[aria-pressed="true"]::after {
+  display: none;
+}
+.ecory-consumer .ecory-variant-option > span:first-child {
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: normal;
+}
+.ecory-consumer .ecory-variant-option > span:last-child {
+  font-size: 15px;
+  line-height: 1.4;
+}
+.ecory-consumer :is(button, a[href], [role="button"]) {
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease,
+    scale 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.ecory-consumer :is(button, a[href], [role="button"]):not(:disabled):active {
+  scale: 0.985;
+  transform: none;
+}
+.ecory-consumer :is(button, input, textarea, select, a):focus-visible {
+  outline: 2px solid #5e8f30;
+  outline-offset: 3px;
+}
+.ecory-consumer .ecory-review-button {
+  background: #f0f6e8;
+  color: #3e6528;
+  border: 1px solid #d5e3c8;
+  box-shadow: none;
+}
+.ecory-product-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: #f0f2ed;
+  border: 1px solid #e7eae3;
+  border-radius: 14px;
+  padding: 5px;
+  margin: 22px 0 18px;
+  scroll-margin-top: 14px;
+}
+.ecory-product-tabs button {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 10px;
+  font-size: 16px;
+  background: transparent;
+  color: #424b40;
+}
+.ecory-product-tabs button[aria-selected="true"] {
+  background: #608e34;
+  color: #fff;
+  box-shadow: 0 2px 7px #35551a16;
+}
+.ecory-consumer [role="tabpanel"][hidden] {
+  display: none;
+}
+.ecory-trust-badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 24px;
+}
+.ecory-trust-badge {
+  border: 1px solid #e3e8dc;
+  border-radius: 11px;
+  padding: 11px 5px;
+  background: #f9fbf5;
+  min-height: 79px;
+}
+.ecory-customer-reviews > h3,
+.ecory-write-review h3 {
+  font-size: 20px;
+  margin: 15px 0;
+}
+.ecory-customer-reviews > p {
+  font-size: 14px;
+  margin: 15px 0;
+}
+.ecory-text-review {
+  border-bottom: 1px solid #e1e5dc;
+  padding: 20px 0;
+}
+.ecory-review-author {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.ecory-review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e5efda;
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: #3b5e27;
+  font-size: 19px;
+}
+.ecory-review-author p {
+  font-size: 16px;
+}
+.ecory-review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+.ecory-review-meta time {
+  font-size: 12px;
+  color: #576052;
+}
+.ecory-stars {
+  display: flex;
+  gap: 2px;
+  color: #e0a32e;
+}
+.ecory-review-copy {
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-top: 13px;
+}
+.ecory-write-review {
+  margin-top: 24px;
+}
+.ecory-write-review fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.ecory-write-review label {
+  display: block;
+  font-size: 14px;
+  margin: 15px 0;
+}
+.ecory-write-review :is(input, textarea) {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+  border: 1px solid #e2e6dd;
+  border-radius: 12px;
+  background: #f2f4ee;
+  padding: 13px 14px;
+  font-size: 16px;
+  color: #202820;
+}
+.ecory-write-review textarea {
+  min-height: 135px;
+  resize: vertical;
+}
+.ecory-rating-input {
+  display: flex;
+  gap: 7px;
+  margin: 8px 0 15px;
+}
+.ecory-rating-input button {
+  padding: 5px;
+  background: transparent;
+  color: #b2b7ad;
+}
+.ecory-rating-input button:has(svg[fill="currentColor"]) {
+  color: #dea22c;
+}
+.ecory-review-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 11px 20px;
+  border-radius: 25px;
+  font-size: 15px;
+}
+.ecory-review-submit:disabled {
+  opacity: 0.55;
+}
+.ecory-review-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 15px 0;
+}
+.ecory-review-pagination button {
+  padding: 7px 12px;
+  border: 1px solid #dce4d3;
+  border-radius: 8px;
+}
+.ecory-review-pagination button:disabled {
+  opacity: 0.4;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecory-consumer :is(button, a[href], [role="button"]) {
+    transition: none;
+  }
+  .ecory-consumer :is(button, a[href], [role="button"]):active {
+    scale: 1;
+  }
+}
+
+/* Restore the original product image surface and clear text hierarchy. */
+.ecory-consumer main {
+  font-size: var(--ecory-body-size, 15px);
+  line-height: 1.65;
+}
+.ecory-consumer main :is(h1, h2, h3, h4) {
+  margin-block-end: 8px;
+  line-height: 1.45;
+}
+.ecory-consumer main h1 {
+  font-size: 22px;
+}
+.ecory-consumer main h2 {
+  font-size: 20px;
+}
+.ecory-consumer main h3 {
+  font-size: 18px;
+}
+.ecory-consumer main h4 {
+  font-size: 16px;
+}
+.ecory-consumer main .text-xs {
+  font-size: 12px;
+  line-height: 1.55;
+}
+.ecory-consumer main .text-\[11px\] {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.ecory-consumer main .text-\[10px\] {
+  font-size: 10px;
+  line-height: 1.5;
+}
+.ecory-consumer .product-card.ecory-product-card-home {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+.ecory-consumer .product-card .ecory-product-media {
+  flex-shrink: 0;
+}
+.ecory-consumer .product-card.ecory-product-card-home .ecory-product-media {
+  background: #ecede9;
+  border: 0;
+  border-radius: 13.3%;
+  box-shadow: none;
+}
+.ecory-consumer .product-card .ecory-product-copy {
+  padding: 7px 7px 3px;
+  min-width: 0;
+}
+.ecory-consumer .product-card .ecory-product-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: var(--ecory-product-size, 16px);
+  line-height: 1.4;
+  margin: 0 0 3px;
+  min-height: 0;
+  height: auto;
+}
+.ecory-consumer .product-card .ecory-product-purpose {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 5px;
+  color: #343d31;
+  overflow-wrap: break-word;
+}
+.ecory-consumer .product-card .ecory-product-price-row {
+  margin-top: 0;
+  row-gap: 3px;
+  column-gap: 5px;
+}
+.ecory-consumer .product-card .ecory-price {
+  font-size: 17px;
+  line-height: 1.45;
+}
+.ecory-consumer .product-card .ecory-price > span {
+  font-size: 10px;
+}
+.ecory-consumer .product-card del {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.ecory-consumer .product-card .ecory-card-action {
+  margin-top: auto;
+  font-size: 13px;
+  padding: 10px 8px;
+  min-height: 43px;
+}
+.ecory-consumer .product-card .ecory-product-price-row > span:last-child {
+  font-size: 11px;
+}
+.ecory-consumer .ecory-product-detail-title {
+  font-size: 22px;
+  line-height: 1.45;
+  padding: 0 3px;
+}
+.ecory-consumer .ecory-product-detail-title .ecory-product-detail-purpose {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+.ecory-consumer .ecory-detail-heading {
+  font-size: 18px;
+}
+.ecory-consumer .ecory-detail-text {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.ecory-consumer [role="tabpanel"] {
+  padding-inline: 4px;
+}
+.ecory-consumer .ecory-text-review {
+  padding: 20px 4px;
+}
+.ecory-consumer .ecory-review-author p {
+  font-size: 16px;
+}
+.ecory-consumer .ecory-review-meta time {
+  font-size: 12px;
+}
+.ecory-consumer .ecory-trust-badge {
+  padding: 12px 8px;
+}
+.ecory-consumer .ecory-item-row .ecory-product-name {
+  font-size: 15px;
+  line-height: 1.45;
+}
+.ecory-consumer .ecory-item-row .ecory-price {
+  font-size: 17px;
+}
+.ecory-consumer .ecory-detail-price {
+  font-size: 24px;
+}
+.ecory-consumer .ecory-order-bar .ecory-price {
+  font-size: 18px;
+}
+.ecory-consumer .ecory-section-title {
+  font-size: 20px;
+  line-height: 1.45;
+}
+.ecory-consumer .ecory-best-selling {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* Purposeful medium/regular hierarchy; never bold an entire number line. */
+.ecory-consumer :is(h1, h2, h3, h4, h5, h6, strong, b, legend),
+.ecory-consumer .ecory-product-name,
+.ecory-consumer .ecory-price,
+.ecory-consumer .ecory-detail-heading,
+.ecory-consumer .ecory-section-title,
+.ecory-consumer .ecory-review-author > div > p,
+.ecory-consumer .ecory-product-tabs button,
+.ecory-consumer button,
+.ecory-consumer .ecory-nav-item.is-active .ecory-nav-label {
+  font-weight: 500 !important;
+}
+.ecory-consumer button :is(span, strong, b),
+.ecory-consumer .ecory-product-tabs button :is(span, strong, b) {
+  font-weight: inherit !important;
+}
+.ecory-consumer :is(input, textarea, select),
+.ecory-consumer .ecory-product-purpose,
+.ecory-consumer .ecory-product-detail-purpose,
+.ecory-consumer .ecory-detail-text,
+.ecory-consumer .ecory-review-copy,
+.ecory-consumer .ecory-review-meta time,
+.ecory-consumer .ecory-trust-badge > span {
+  font-weight: 400 !important;
+}
+.ecory-consumer .product-card del {
+  font-weight: 400 !important;
+}
+
+/* Product details only: tagline follows the name inline, wrapping naturally. */
+.ecory-consumer .ecory-product-detail-title .ecory-product-detail-purpose {
+  display: inline;
+  margin: 0 0 0 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+/* Stable product action hover: keep one paint layer and a fixed hit area. */
+.ecory-consumer .product-card .ecory-card-action {
+  background-image: none;
+  background-color: #86bf3c;
+  border-color: #86bf3c;
+  color: #fff;
+  transform: none;
+  scale: 1;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.ecory-consumer .product-card .ecory-card-action:not(:disabled):hover {
+  background-image: none;
+  background-color: #79ae35;
+  transform: none;
+  scale: 1;
+}
+.ecory-consumer .product-card .ecory-card-action:not(:disabled):active {
+  background-image: none;
+  background-color: #6c9e2e;
+  transform: none;
+  scale: 1;
+  box-shadow: inset 0 1px 3px #294c1b20;
+}
+
+/* Neutral, restrained depth for shared app surfaces. */
+.ecory-consumer {
+  --ecory-surface-shadow: 0 2px 8px rgb(24 34 20 / 4%);
+}
+.ecory-consumer .product-card {
+  box-shadow: 0 2px 8px rgb(24 34 20 / 4%);
+}
+.ecory-consumer .ecory-action-primary {
+  box-shadow: 0 1px 3px rgb(24 34 20 / 7%);
+}

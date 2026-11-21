@@ -1017,3 +1017,734 @@
   font-size: 12px;
   line-height: 1.6;
 }
+
+/* Compact directory proportions, without stretching portrait assets. */
+.doctor-directory-grid .doctor-card-photo {
+  height: 155px;
+  flex-shrink: 0;
+}
+.doctor-directory-grid .doctor-card-caption {
+  padding: 10px 11px 12px;
+  margin-top: -12px;
+}
+.doctor-directory-grid .doctor-card-caption > p {
+  min-height: 0;
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.doctor-directory-grid .doctor-card-bottom {
+  padding-top: 9px;
+  margin-top: auto;
+}
+.doctor-directory-grid .doctor-card-profile-link {
+  height: 100%;
+}
+.ecory-consumer .doctor-directory-grid .doctor-card-caption h3 {
+  font-size: 14px;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+@media (max-width: 350px) {
+  .doctor-directory-grid .doctor-card-photo {
+    height: 135px;
+  }
+  .doctor-directory-grid .doctor-card-caption {
+    padding: 9px;
+  }
+  .ecory-consumer .doctor-directory-grid .doctor-card-caption h3 {
+    font-size: 13px;
+  }
+}
+
+/* Reference appointment banner, using Ecory brand shades. */
+.doctor-appointment-banner {
+  padding: 16px;
+  border-radius: 25px;
+  background: linear-gradient(120deg, #6fa332, #86bf3c);
+  color: #fff;
+  margin: 20px 0;
+  box-shadow: 0 7px 20px #466c2514;
+}
+.doctor-appointment-person {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.doctor-appointment-person img {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffffff70;
+}
+.doctor-appointment-person > div {
+  flex: 1;
+  min-width: 0;
+}
+.doctor-appointment-person strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.doctor-appointment-person small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.doctor-appointment-all {
+  background: #fff;
+  color: #4c7727;
+  border-radius: 99px;
+  padding: 7px 10px;
+  font-size: 11px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.doctor-appointment-schedule {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 10px;
+  border-top: 1px solid #ffffff30;
+  margin-top: 12px;
+  padding-top: 14px;
+}
+.doctor-appointment-schedule > div {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.doctor-appointment-schedule span {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.doctor-appointment-schedule small {
+  display: block;
+  font-size: 10px;
+}
+.doctor-appointment-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 14px;
+}
+.doctor-appointment-actions a {
+  flex: 1;
+  text-align: center;
+  border-radius: 99px;
+  padding: 10px 6px;
+  background: #ffffff25;
+  border: 1px solid #ffffff60;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+}
+.doctor-appointment-actions a:first-child {
+  background: #fff;
+  color: #4c7727;
+}
+.doctor-reference-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding: 17px 8px;
+  background: #fff;
+  border-radius: 23px;
+  box-shadow: 0 5px 18px #26421807;
+  margin: 12px 0;
+}
+.doctor-reference-stats > div {
+  min-width: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+.doctor-reference-stats svg {
+  color: #527b30;
+  background: #f0f5e9;
+  box-sizing: content-box;
+  padding: 10px;
+  border-radius: 50%;
+}
+.doctor-reference-stats strong {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.doctor-reference-stats span {
+  font-size: 10px;
+  color: #263620;
+}
+.doctor-profile-hero {
+  background: linear-gradient(140deg, #f8faf5, #eaf2df);
+  min-height: 320px;
+}
+.doctor-hero-copy {
+  max-width: 54%;
+}
+.ecory-consumer .doctor-hero-copy h2 {
+  font-size: 24px;
+  line-height: 1.35;
+}
+
+/* The directory retains a simple entry; reference cards live only in booking history. */
+.doctor-directory-bookings.doctor-bookings-entry {
+  background: #86bf3c;
+  color: #fff;
+  border-color: #86bf3c;
+}
+.doctor-bookings-entry .doctor-booking-icon {
+  background: #ffffff26;
+  color: #fff;
+}
+.doctor-bookings-entry small,
+.doctor-bookings-entry strong {
+  color: #fff;
+}
+.doctor-booking-reference {
+  background: linear-gradient(120deg, #6fa332, #86bf3c);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 6px 18px #49782315;
+}
+.doctor-booking-reference .doctor-booking-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff70;
+  background: #ffffff25;
+  color: #fff;
+}
+.doctor-booking-reference .doctor-booking-identity h3 {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.doctor-booking-reference .doctor-booking-identity p,
+.doctor-booking-reference .doctor-booking-identity > span {
+  color: #fff;
+  font-size: 11px;
+}
+.doctor-booking-profile-link {
+  margin-left: auto;
+  background: #fff;
+  color: #4e7929;
+  padding: 7px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.doctor-booking-reference .doctor-booking-appointment {
+  background: transparent;
+  border-top: 1px solid #ffffff30;
+  border-radius: 0;
+  margin-top: 10px;
+  padding: 12px 0 0;
+}
+.doctor-booking-reference .doctor-booking-appointment > div,
+.doctor-booking-reference .doctor-booking-appointment span,
+.doctor-booking-reference .doctor-booking-appointment small {
+  color: #fff;
+}
+.doctor-booking-reference .doctor-booking-status-row {
+  margin: 11px 0 0;
+  gap: 6px;
+}
+.doctor-booking-reference .doctor-booking-status,
+.doctor-booking-reference .doctor-booking-payment {
+  font-size: 10px;
+  padding: 4px 8px;
+}
+.doctor-booking-reference .doctor-booking-card-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  border: none;
+  padding-top: 0;
+  margin-top: 12px;
+}
+.doctor-booking-reference .doctor-booking-card-bottom > div {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.doctor-booking-reference .doctor-booking-card-bottom small,
+.doctor-booking-reference .doctor-booking-card-bottom strong {
+  color: #fff;
+}
+.doctor-booking-reference .doctor-booking-card-bottom strong {
+  font-size: 14px;
+  margin: 0;
+}
+.doctor-booking-reference .doctor-booking-card-bottom > a {
+  background: #fff;
+  color: #4e7929;
+  font-size: 12px;
+  padding: 9px 6px;
+}
+.doctor-booking-reference .doctor-booking-card-bottom > a:last-child {
+  background: #ffffff26;
+  color: #fff;
+  border: 1px solid #ffffff50;
+}
+.doctor-booking-reference .doctor-booking-note {
+  background: #ffffff20;
+  color: #fff;
+  font-size: 12px;
+}
+
+/* Readable doctor typography, scoped to these views. */
+.ecory-consumer .doctor-directory-grid .doctor-card-caption h3 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.doctor-directory-grid .doctor-card-caption > p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.doctor-card-bottom span:not(.doctor-open-arrow) {
+  font-size: 12px;
+}
+.doctor-card-bottom strong {
+  font-size: 17px;
+}
+.ecory-consumer .doctor-hero-copy h2 {
+  font-size: 25px;
+  line-height: 1.4;
+}
+.doctor-hero-copy p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.doctor-profile-kicker {
+  font-size: 11px;
+}
+.doctor-profile-tabs button {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 11px 8px;
+}
+.ecory-consumer .doctor-detail-card h3 {
+  font-size: 17px;
+}
+.doctor-detail-card p,
+.doctor-profile-text p,
+.doctor-location p {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.doctor-reference-stats strong {
+  font-size: 16px;
+}
+.doctor-reference-stats span {
+  font-size: 12px;
+}
+.doctor-date-panel p,
+.doctor-admin-note,
+.doctor-slot-note,
+.doctor-manual-schedule {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.doctor-mode-grid button span {
+  font-size: 14px;
+}
+.doctor-mode-grid button strong {
+  font-size: 18px;
+}
+.doctor-directory-services > p,
+.doctor-directory-services article p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.doctor-bookings-entry strong {
+  font-size: 16px;
+}
+.doctor-directory-bookings small {
+  font-size: 13px;
+}
+.doctor-booking-reference .doctor-booking-identity h3 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.doctor-booking-reference .doctor-booking-identity p,
+.doctor-booking-reference .doctor-booking-identity > span {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.doctor-booking-reference .doctor-booking-status,
+.doctor-booking-reference .doctor-booking-payment {
+  font-size: 12px;
+}
+.doctor-booking-reference .doctor-booking-appointment span {
+  font-size: 14px;
+}
+.doctor-booking-reference .doctor-booking-appointment small {
+  font-size: 12px;
+}
+.doctor-booking-reference .doctor-booking-card-bottom small {
+  font-size: 12px;
+}
+.doctor-booking-reference .doctor-booking-card-bottom strong {
+  font-size: 16px;
+}
+.doctor-booking-reference .doctor-booking-card-bottom > a,
+.doctor-booking-profile-link {
+  font-size: 13px;
+}
+.doctor-booking-reference .doctor-booking-note {
+  font-size: 14px;
+  line-height: 1.7;
+}
+@media (max-width: 350px) {
+  .ecory-consumer .doctor-directory-grid .doctor-card-caption h3 {
+    font-size: 15px;
+  }
+  .doctor-directory-grid .doctor-card-caption > p {
+    font-size: 12px;
+  }
+  .doctor-booking-profile-link {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+  .doctor-booking-reference .doctor-booking-card-top {
+    gap: 8px;
+  }
+}
+
+/* Doctor details: one continuous surface with an icon metric row. */
+.doctor-reference-stats {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 22px 4px 18px;
+  border-bottom: 1px solid #dfe5da;
+  gap: 6px;
+}
+.doctor-reference-stats > div {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  gap: 7px;
+}
+.doctor-reference-stats svg {
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  background: #f3f5ef;
+  color: #42662a;
+  border-radius: 50%;
+}
+.doctor-reference-stats strong {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #24341d;
+}
+.doctor-reference-stats span {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #34432d;
+}
+.doctor-profile-text .doctor-detail-card {
+  display: block;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 4px 0 19px;
+  margin: 0 0 12px;
+}
+.doctor-detail-card .doctor-detail-icon {
+  display: none;
+}
+.ecory-consumer .doctor-detail-card h3 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 9px;
+  color: #24341d;
+}
+.doctor-detail-card p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.85;
+  margin: 0;
+  white-space: pre-wrap;
+}
+.doctor-profile-text .doctor-location {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 4px 0 18px;
+  margin: 0;
+  align-items: flex-start;
+}
+.doctor-profile-sheet {
+  box-shadow: none;
+}
+
+.doctor-reviews-section {
+  padding: 10px 0 22px;
+  color: #263620;
+}
+.doctor-reviews-section h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 12px 0;
+}
+.doctor-text-review {
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e6da;
+}
+.doctor-text-review > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+.doctor-text-review strong {
+  font-weight: 500;
+  font-size: 15px;
+}
+.doctor-text-review time {
+  font-size: 12px;
+}
+.doctor-review-stars {
+  display: flex;
+  gap: 3px;
+  margin: 8px 0;
+  color: #dc9a19;
+}
+.doctor-text-review p {
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.doctor-reviews-section form {
+  display: grid;
+  gap: 12px;
+}
+.doctor-reviews-section form p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.doctor-review-picker {
+  display: flex;
+  gap: 9px;
+}
+.doctor-review-picker button {
+  color: #d89918;
+  padding: 4px;
+  background: transparent;
+  border: none;
+}
+.doctor-reviews-section label {
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+}
+.doctor-reviews-section input,
+.doctor-reviews-section textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dce5d4;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+  color: #22351c;
+}
+.doctor-submit-review {
+  background: #86bf3c;
+  color: #fff;
+  border-radius: 99px;
+  padding: 12px 18px;
+  font-size: 14px;
+  justify-self: start;
+}
+.doctor-submit-review:disabled {
+  opacity: 0.6;
+}
+.doctor-review-pagination {
+  display: flex;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+/* Quiet shared surfaces: statistics above, continuous details below. */
+.doctor-reference-stats {
+  background: #fff;
+  border: 1px solid #e4e9df;
+  border-radius: 18px;
+  padding: 18px 8px;
+  margin: 14px 0 12px;
+  box-shadow: 0 3px 12px #263c1805;
+}
+.doctor-profile-sheet {
+  background: #fff;
+  border: 1px solid #e4e9df;
+  border-radius: 20px;
+  padding: 18px 15px;
+  box-shadow: 0 3px 12px #263c1805;
+}
+.doctor-profile-hero {
+  border-radius: 22px;
+  box-shadow: none;
+  background: #f1f5eb;
+}
+.doctor-reference-picker {
+  border: 1px solid #e5e9e0;
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  margin: 14px 0;
+}
+.doctor-picker-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  margin: 0 0 12px;
+}
+.doctor-picker-heading h4 {
+  margin: 0;
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.doctor-picker-heading > div {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+}
+.doctor-picker-heading button {
+  padding: 4px;
+  background: transparent;
+  border: 0;
+  color: #435c32;
+}
+.doctor-picker-heading > strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+.doctor-reference-picker .doctor-date-options {
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 0 0 6px;
+}
+.doctor-reference-picker .doctor-date-options button {
+  min-width: 59px;
+  min-height: 72px;
+  flex-shrink: 0;
+  border: 1px solid #e1e7dc;
+  border-radius: 13px;
+  background: #fff;
+  padding: 9px 6px;
+  color: #34452b;
+  box-shadow: none;
+}
+.doctor-reference-picker .doctor-date-options button[aria-pressed="true"] {
+  background: #eef6e3;
+  border-color: #86bf3c;
+  color: #3f6621;
+}
+.doctor-reference-picker .doctor-date-options strong {
+  font-size: 20px;
+  font-weight: 500;
+}
+.doctor-reference-picker .doctor-date-options span {
+  font-size: 11px;
+}
+.doctor-exact-choice {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+  margin: 8px 0 20px;
+  color: #31442a;
+}
+.doctor-exact-choice input {
+  max-width: 155px;
+  width: 50%;
+  padding: 8px;
+  border-radius: 9px;
+  border: 1px solid #dce5d4;
+  background: #fff;
+  color: #263720;
+  font-size: 14px;
+  min-width: 0;
+}
+.doctor-reference-picker .doctor-time-ruler {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 4px 0 10px;
+  scroll-snap-type: x proximity;
+  border: 0;
+  background: transparent;
+}
+.doctor-reference-picker .doctor-time-ruler button {
+  flex: 0 0 83px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  padding: 5px;
+  color: #4c603f;
+  scroll-snap-align: center;
+  min-height: 66px;
+}
+.doctor-reference-picker .doctor-time-ruler button > span {
+  display: block;
+  width: 100%;
+  height: 28px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 8px,
+    #b3beaa 8px 9px,
+    transparent 9px 16px
+  );
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 8px;
+}
+.doctor-reference-picker .doctor-time-ruler button[aria-pressed="true"] {
+  background: #edf5e4;
+  color: #426927;
+}
+.doctor-reference-picker .doctor-time-ruler button[aria-pressed="true"] > span {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 8px,
+    #6da333 8px 10px,
+    transparent 10px 16px
+  );
+}
+.doctor-reference-picker .doctor-time-ruler strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.doctor-reference-picker button:disabled {
+  opacity: 0.35;
+}
+@media (prefers-reduced-motion: reduce) {
+  .doctor-reference-picker * {
+    scroll-behavior: auto;
+  }
+}

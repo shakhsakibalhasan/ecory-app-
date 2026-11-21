@@ -1,0 +1,95 @@
+/* Health Tips only: compact editorial cards in Ecory's existing green theme. */
+.ecory-consumer .ecory-tip-categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+.ecory-consumer .ecory-tip-category {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 36px;
+  padding: 6px 13px;
+  border: 1px solid color-mix(in oklch, var(--color-foreground) 9%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color-card) 65%, transparent);
+  color: var(--color-foreground);
+  font-size: .8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+.ecory-consumer .ecory-tip-category.is-active {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border-color: transparent;
+}
+.ecory-consumer .ecory-tip-category:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.ecory-consumer .ecory-tips-tabs,
+.ecory-consumer .ecory-tips-search {
+  border: 1px solid color-mix(in oklch, var(--color-foreground) 6%, transparent);
+  box-shadow: 0 2px 6px rgb(24 34 20 / 3%);
+}
+.ecory-consumer .ecory-tips-list > .ecory-health-tip {
+  overflow: hidden;
+  padding: 14px 15px;
+  border: 1px solid color-mix(in oklch, var(--color-foreground) 7%, transparent);
+  border-radius: 20px;
+  background: var(--color-card);
+  box-shadow: 0 2px 8px rgb(24 34 20 / 3%);
+}
+.ecory-consumer .ecory-health-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ecory-consumer .ecory-health-tip-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--color-primary-soft);
+  color: var(--color-accent-foreground);
+}
+.ecory-consumer .ecory-health-tip-category {
+  margin: 0 0 2px;
+  color: var(--color-muted-foreground);
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+.ecory-consumer.ecory-compact main h2.ecory-health-tip-title,
+.ecory-consumer .ecory-health-tip-title {
+  margin: 0;
+  color: var(--color-foreground);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.ecory-consumer .ecory-health-tip-summary {
+  margin: 9px 0 0;
+  color: var(--color-muted-foreground);
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.ecory-consumer .ecory-health-tip-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecory-consumer .ecory-tip-category { transition: none; }
+}

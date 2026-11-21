@@ -1,0 +1,156 @@
+/* Consumer density: 4/6/8/12/16/20px rhythm. Keep branding, image ratios,
+   readable type and primary touch targets; admin and portal editors are separate. */
+.ecory-consumer.ecory-compact {
+  --ecory-space-copy: 6px;
+  --ecory-space-card: 12px;
+  --ecory-space-section: 16px;
+  --ecory-surface-shadow: 0 2px 7px rgb(24 34 20 / 4%);
+}
+.ecory-compact .ecory-app-header {
+  min-height: 58px;
+  padding: max(8px, env(safe-area-inset-top)) 16px 6px;
+  gap: 8px;
+}
+.ecory-compact main.ecory-app-content {
+  padding: 6px 16px 16px;
+  line-height: 1.6;
+}
+.ecory-compact .ecory-app-bottom-bar {
+  padding: 6px 12px max(8px, env(safe-area-inset-bottom));
+}
+.ecory-compact .ecory-app-navigation {
+  padding: 8px 12px max(8px, env(safe-area-inset-bottom));
+}
+.ecory-compact .ecory-app-navigation > div { padding: 4px; }
+.ecory-compact .ecory-nav-item { height: 50px; }
+.ecory-compact .ecory-nav-icon { top: 5px; }
+.ecory-compact .ecory-nav-label { bottom: 6px; }
+.ecory-compact .ecory-nav-item.is-active .ecory-nav-icon { top: 11px; }
+.ecory-compact .ecory-nav-item.is-active .ecory-nav-label { bottom: 19px; }
+
+/* Normalize existing route utilities rather than scaling the whole interface.
+   Small gaps stay small; generous section gaps share a single upper bound. */
+.ecory-compact main :is(.mt-5, .mt-6, .mt-7, .mt-8) { margin-top: var(--ecory-space-section); }
+.ecory-compact main .mt-4 { margin-top: 12px; }
+.ecory-compact main :is(.mb-5, .mb-6, .mb-7, .mb-8) { margin-bottom: 16px; }
+.ecory-compact main :is(.mb-3, .mb-4) { margin-bottom: 8px; }
+.ecory-compact main :is(.p-5, .p-6, .p-7, .p-8) { padding: 14px; }
+.ecory-compact main .p-4 { padding: 12px; }
+.ecory-compact main :is(.gap-4, .gap-5, .gap-6) { gap: 12px; }
+.ecory-compact main .gap-3\.5 { gap: 12px; }
+.ecory-compact main :is(.space-y-4, .space-y-5, .space-y-6, .space-y-8) {
+  :where(& > :not(:last-child)) {
+    margin-block-start: 0;
+    margin-block-end: 12px;
+  }
+}
+.ecory-consumer.ecory-compact main :is(h1, h2, h3, h4) { margin-bottom: 6px; }
+.ecory-consumer.ecory-compact .ecory-section {
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: var(--ecory-surface-shadow);
+}
+.ecory-consumer.ecory-compact .ecory-section-title { font-size: 18px; line-height: 1.4; }
+.ecory-consumer.ecory-compact .ecory-detail-text {
+  line-height: 1.65;
+  margin-top: 6px;
+}
+.ecory-consumer.ecory-compact .ecory-product-detail-title { font-size: 21px; line-height: 1.4; }
+.ecory-consumer.ecory-compact .ecory-category-tile { min-height: 54px; padding: 8px 10px; }
+.ecory-consumer.ecory-compact .ecory-category-tile .h-9 { height: 32px; width: 32px; }
+.ecory-consumer.ecory-compact .ecory-home-search { min-height: 44px; padding: 9px 12px; }
+.ecory-consumer.ecory-compact .ecory-home-shortcut { min-height: 44px; padding-block: 9px; }
+.ecory-consumer.ecory-compact .ecory-profile-menu-row { padding: 9px 12px; gap: 10px; min-height: 52px; }
+.ecory-consumer.ecory-compact .product-card { border-radius: 12px; }
+/* Shorten the image surface gently; object-contain preserves the actual bottle. */
+.ecory-consumer.ecory-compact .product-card .ecory-product-media { aspect-ratio: 1.06; }
+.ecory-consumer.ecory-compact .product-card .ecory-product-copy { padding: 5px 8px 4px; }
+.ecory-consumer.ecory-compact .product-card .ecory-product-name { margin-bottom: 2px; }
+.ecory-consumer.ecory-compact .product-card .ecory-product-purpose { margin-bottom: 3px; line-height: 1.45; }
+.ecory-consumer.ecory-compact .product-card .ecory-card-action {
+  min-height: 44px;
+  padding: 8px;
+  border-radius: 9px;
+}
+.ecory-consumer.ecory-compact .ecory-variant-option { min-height: 50px; padding: 7px 9px; }
+.ecory-consumer.ecory-compact .ecory-product-tabs { margin: 16px 0 12px; padding: 4px; }
+.ecory-consumer.ecory-compact .ecory-product-tabs button { min-height: 44px; padding: 8px 6px; }
+.ecory-consumer.ecory-compact .ecory-trust-badges { margin-top: 16px; gap: 8px; }
+.ecory-consumer.ecory-compact .ecory-trust-badge { padding: 9px 6px; min-height: 64px; }
+.ecory-consumer.ecory-compact .ecory-text-review { padding: 14px 4px; }
+.ecory-consumer.ecory-compact .ecory-review-copy { line-height: 1.65; }
+.ecory-consumer.ecory-compact .ecory-item-row { padding: 10px; border-radius: 12px; }
+.ecory-consumer.ecory-compact .ecory-order-bar { min-height: 58px; padding: 6px 10px; gap: 8px; }
+.ecory-consumer.ecory-compact .ecory-floating-action { min-height: 44px; padding: 8px 12px; }
+.ecory-consumer.ecory-compact .offer-ticker { min-height: 40px; margin-top: 10px; }
+.ecory-consumer.ecory-compact .offer-ticker > div { padding-block: 6px; }
+
+/* Doctor: compact photographs, one metrics row and a continuous detail surface. */
+.ecory-consumer.ecory-compact .doctor-directory-heading { margin-bottom: 12px; }
+.ecory-consumer.ecory-compact .doctor-search { margin-bottom: 12px; border-radius: 12px; }
+.ecory-consumer.ecory-compact .doctor-directory-grid { gap: 12px; }
+.ecory-consumer.ecory-compact .doctor-portrait-card { border-radius: 16px; box-shadow: var(--ecory-surface-shadow); }
+.ecory-consumer.ecory-compact .doctor-card-photo { height: 144px; }
+.ecory-consumer.ecory-compact .doctor-card-caption { padding: 10px; }
+.ecory-consumer.ecory-compact .doctor-card-bottom { padding-top: 6px; }
+.ecory-consumer.ecory-compact .doctor-directory-services { margin-top: 16px; padding: 12px; border-radius: 16px; }
+.ecory-consumer.ecory-compact .doctor-panel-grip { margin-bottom: 12px; }
+.ecory-consumer.ecory-compact .doctor-directory-services > div { margin-top: 12px; }
+.ecory-consumer.ecory-compact .doctor-directory-services article { padding: 12px; }
+.ecory-consumer.ecory-compact .doctor-directory-services article h3 { margin-top: 10px; }
+.ecory-consumer.ecory-compact .doctor-profile-hero { min-height: 280px; border-radius: 18px; }
+.ecory-consumer.ecory-compact .doctor-hero-copy { min-height: 228px; padding-top: 30px; padding-bottom: 16px; }
+.ecory-consumer.ecory-compact .doctor-hero-copy h2 { margin: 10px 0 6px; }
+.ecory-consumer.ecory-compact .doctor-hero-actions { padding: 8px 10px; }
+.ecory-consumer.ecory-compact .doctor-reference-stats {
+  margin: 12px 0;
+  padding: 12px 6px;
+  border-radius: 14px;
+}
+.ecory-consumer.ecory-compact .doctor-reference-stats > div { gap: 4px; }
+.ecory-consumer.ecory-compact .doctor-profile-sheet { padding: 12px; border-radius: 16px; }
+.ecory-consumer.ecory-compact .doctor-profile-tabs { margin-bottom: 12px; }
+.ecory-consumer.ecory-compact .doctor-profile-tabs button { padding: 8px 4px; min-height: 44px; }
+.ecory-consumer.ecory-compact .doctor-detail-card { padding: 4px 0 12px; margin-bottom: 12px; }
+.ecory-consumer.ecory-compact .doctor-detail-card h3 { margin-bottom: 6px; }
+.ecory-consumer.ecory-compact :is(.doctor-detail-card p, .doctor-profile-text p, .doctor-location p) { line-height: 1.65; }
+.ecory-consumer.ecory-compact .doctor-profile-text .doctor-location { padding: 4px 0 12px; }
+.ecory-consumer.ecory-compact .doctor-consultation-panel { padding-top: 8px; }
+.ecory-consumer.ecory-compact .doctor-consultation-panel > h3 { margin: 8px 0; }
+.ecory-consumer.ecory-compact .doctor-mode-grid { gap: 10px; }
+.ecory-consumer.ecory-compact .doctor-mode-grid button { padding: 12px; min-height: 108px; border-radius: 12px; }
+.ecory-consumer.ecory-compact .doctor-mode-grid button span { margin-top: 8px; }
+.ecory-consumer.ecory-compact :is(.doctor-admin-note, .doctor-manual-schedule, .doctor-slot-note) { line-height: 1.6; margin-block: 10px; }
+.ecory-consumer.ecory-compact .doctor-call-action { margin-top: 12px; min-height: 44px; padding: 8px 12px; }
+.ecory-consumer.ecory-compact .doctor-directory-bookings { margin-top: 16px; padding: 10px 12px; }
+.ecory-consumer.ecory-compact .doctor-booking-list { gap: 12px; padding-bottom: 16px; }
+.ecory-consumer.ecory-compact :is(.doctor-booking-card, .doctor-booking-reference) { padding: 12px; border-radius: 16px; }
+.ecory-consumer.ecory-compact .doctor-booking-reference .doctor-booking-appointment { padding-top: 10px; margin-top: 8px; }
+.ecory-consumer.ecory-compact .doctor-booking-reference .doctor-booking-card-bottom { margin-top: 10px; gap: 8px; }
+.ecory-consumer.ecory-compact .doctor-booking-card-bottom > a { min-height: 44px; padding: 9px 6px; }
+.ecory-consumer.ecory-compact .doctor-reference-picker { padding: 12px; margin: 12px 0; border-radius: 14px; }
+.ecory-consumer.ecory-compact .doctor-reference-picker .doctor-date-options button { min-height: 66px; padding: 7px 6px; }
+.ecory-consumer.ecory-compact .doctor-reference-picker .doctor-time-ruler button { min-height: 60px; }
+.ecory-consumer.ecory-compact .doctor-exact-choice { margin-bottom: 12px; }
+.ecory-consumer.ecory-compact .doctor-text-review { padding: 12px 0; }
+.ecory-consumer.ecory-compact .doctor-text-review p { line-height: 1.65; }
+.ecory-consumer.ecory-compact .doctor-reviews-section form { gap: 10px; }
+.ecory-consumer.ecory-compact .doctor-reviews-section :is(input, textarea) { padding: 10px; }
+.ecory-consumer.ecory-compact .doctor-submit-review { padding: 9px 16px; min-height: 44px; }
+/* This dialog is portalled outside Shell, so opt it in explicitly. */
+.ecory-spin-modal.ecory-compact-overlay { padding: 16px; gap: 10px; border-radius: 20px; }
+.ecory-compact-overlay .ecory-spin-wheel-wrap { max-width: 300px; }
+.ecory-compact-overlay .ecory-spin-reward { padding: 14px; border-radius: 14px; }
+.ecory-compact-overlay .ecory-spin-coupon { padding: 12px; margin-top: 12px; border-radius: 12px; }
+.ecory-compact-overlay .ecory-spin-cta { min-height: 44px; padding: 9px 16px; }
+.ecory-compact-overlay :is(input, select) { padding-block: 9px; min-height: 44px; }
+@media (max-height: 680px) {
+  .ecory-compact-overlay .ecory-spin-wheel-wrap { max-width: 220px; }
+}
+@media (max-width: 350px) {
+  .ecory-compact main.ecory-app-content { padding-inline: 12px; }
+  .ecory-compact .ecory-app-header { padding-inline: 12px; }
+  .ecory-consumer.ecory-compact .doctor-directory-grid { gap: 10px; }
+  .ecory-consumer.ecory-compact .doctor-card-photo { height: 132px; }
+  .ecory-consumer.ecory-compact .doctor-card-caption { padding: 9px; }
+}

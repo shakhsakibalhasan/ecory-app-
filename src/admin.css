@@ -1,0 +1,53 @@
+/* Scoped to the admin panel: storefront styles stay independent. */
+.ecory-admin { min-height:100dvh; color:#20392b; background:linear-gradient(145deg,#f2f6ee,#f8f9f6 60%,#eff4e9); padding: max(24px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(32px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left)); }
+.ecory-admin *, .ecory-admin *::before, .ecory-admin *::after { box-sizing:border-box; }
+.admin-frame { width:100%; max-width:1440px; margin:0 auto; min-width:0; }
+.admin-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; border:1px solid #e1e8dc; background:#fff; border-radius:24px; padding:22px 26px; box-shadow:0 8px 28px #24492c06; }
+.admin-brand { display:flex; align-items:center; gap:14px; min-width:0; }
+.admin-brand-icon { display:grid; place-items:center; width:52px; height:52px; flex:none; background:#eaf4dc; border:1px solid #dceacb; color:#537f27; border-radius:17px; }
+.admin-eyebrow { font-size:11px; letter-spacing:.12em; font-weight:700; color:#6e8068; margin:0 0 3px; }
+.admin-header h1 { font-size:25px; font-weight:800; line-height:1.35; margin:0; }
+.admin-account { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:12px 18px; min-width:0; max-width:100%; }
+.admin-email { font-size:12px; color:#6d7a6c; overflow-wrap:anywhere; min-width:0; }
+.admin-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.admin-action { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:9px 13px; border:1px solid #e0e7da; border-radius:12px; background:#f8faf5; font-size:12px; font-weight:600; text-decoration:none; cursor:pointer; }
+.admin-layout { display:grid; grid-template-columns:232px minmax(0,1fr); align-items:start; gap:22px; margin-top:22px; }
+.admin-nav { min-width:0; border:1px solid #e0e7da; border-radius:22px; background:#fff; padding:14px; }
+.admin-menu-heading { padding:3px 9px 12px; font-size:12px; font-weight:600; color:#89927f; }
+.admin-menu-grid { display:grid; gap:5px; }
+.admin-menu-item { width:100%; display:flex; align-items:center; gap:11px; min-height:44px; padding:10px 12px; text-align:left; border:1px solid transparent; border-radius:13px; color:#60705c; font-size:13px; font-weight:600; cursor:pointer; transition:background-color .18s,color .18s; }
+.admin-menu-item svg { flex-shrink:0; }
+.admin-menu-item span { min-width:0; overflow-wrap:anywhere; line-height:1.5; }
+.admin-menu-item:hover { background:#f3f7ed; color:#294a2a; }
+.admin-menu-item.is-active { background:#d8efb8; color:#28471e; border-color:#c5e39e; }
+.ecory-admin button:focus-visible,.ecory-admin a:focus-visible { outline:2px solid #739d44; outline-offset:3px; }
+.admin-content { min-width:0; }
+.admin-section-heading { padding:5px 2px 18px; }
+.admin-section-heading h2 { font-size:25px; font-weight:800; line-height:1.4; margin:0; }
+.admin-section-body { min-width:0; }
+.admin-section-body > div { min-width:0; }
+.ecory-admin .bg-card { border:1px solid #e3e9df; box-shadow:0 8px 28px #24492c05; }
+.ecory-admin input:not([type=checkbox]):not([type=radio]):not([type=file]),.ecory-admin textarea,.ecory-admin select { min-width:0; max-width:100%; border:1px solid #dfe6d9; border-radius:12px; background:#fafcf8; padding:11px 13px; color:#273c2b; line-height:1.5; }
+.ecory-admin input:focus,.ecory-admin textarea:focus,.ecory-admin select:focus { background:#fff; }
+.ecory-admin label { line-height:1.6; }
+.ecory-admin input[type=checkbox],.ecory-admin input[type=radio] { accent-color:#7baf38; }
+.ecory-admin .bg-primary { background:#8cbd43; color:#fff; }
+.ecory-admin table { white-space:nowrap; }
+@media (max-width:1023px) {
+ .admin-layout { grid-template-columns:minmax(0,1fr); gap:20px; }
+ .admin-menu-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .admin-menu-heading { padding-bottom:8px; }
+}
+@media (max-width:639px) {
+ .ecory-admin { padding-top:max(16px,env(safe-area-inset-top)); padding-left:max(12px,env(safe-area-inset-left)); padding-right:max(12px,env(safe-area-inset-right)); }
+ .admin-header { padding:18px 16px; border-radius:20px; gap:16px; }
+ .admin-header h1 { font-size:22px; }
+ .admin-account { width:100%; justify-content:flex-start; }
+ .admin-email { flex-basis:100%; }
+ .admin-layout { margin-top:16px; }
+ .admin-nav { padding:10px; border-radius:18px; }
+ .admin-menu-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .admin-menu-item { font-size:12px; padding:9px 8px; gap:8px; }
+ .admin-section-heading h2 { font-size:22px; }
+ .admin-section-body > .bg-card { padding:16px; border-radius:20px; }
+}
